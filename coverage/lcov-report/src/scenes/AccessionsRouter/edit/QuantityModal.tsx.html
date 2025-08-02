@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/105</span>
+                <span class='fraction'>0/109</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/98</span>
+                <span class='fraction'>0/97</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/23</span>
+                <span class='fraction'>0/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/105</span>
+                <span class='fraction'>0/109</span>
             </div>
         
             
@@ -502,7 +502,9 @@
 <a name='L437'></a><a href='#L437'>437</a>
 <a name='L438'></a><a href='#L438'>438</a>
 <a name='L439'></a><a href='#L439'>439</a>
-<a name='L440'></a><a href='#L440'>440</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L440'></a><a href='#L440'>440</a>
+<a name='L441'></a><a href='#L441'>441</a>
+<a name='L442'></a><a href='#L442'>442</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -554,6 +556,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -617,13 +620,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -767,7 +770,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -801,6 +804,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -992,6 +996,7 @@ function <span class="fstat-no" title="function not covered" >UnitsSelector(</sp
     /&gt;
   );
 }
+&nbsp;
 export default function <span class="fstat-no" title="function not covered" >QuantityModal(</span>props: QuantityModalProps): JSX.Element {
   const { onClose, open, accession, reload, statusEdit } = <span class="cstat-no" title="statement not covered" >props;</span>
 &nbsp;
@@ -1047,8 +1052,8 @@ export default function <span class="fstat-no" title="function not covered" >Qua
 <span class="cstat-no" title="statement not covered" >      setRemainingQuantityNotesError(false);</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (quantityChanged &amp;&amp; isByWeight) {</span>
-<span class="cstat-no" title="statement not covered" >      if (!record.subsetWeight) {</span>
+<span class="cstat-no" title="statement not covered" >    if (isByWeight || isSubsetOpen) {</span>
+<span class="cstat-no" title="statement not covered" >      if (!record.subsetWeight?.quantity) {</span>
 <span class="cstat-no" title="statement not covered" >        setSubsetWeightError(strings.REQUIRED_FIELD);</span>
 <span class="cstat-no" title="statement not covered" >        hasErrors = true;</span>
       } else <span class="cstat-no" title="statement not covered" >if (record.subsetWeight.quantity &lt;= 0) {</span>
@@ -1057,16 +1062,16 @@ export default function <span class="fstat-no" title="function not covered" >Qua
       } else {
 <span class="cstat-no" title="statement not covered" >        setSubsetWeightError('');</span>
       }
-    } else {
-<span class="cstat-no" title="statement not covered" >      setSubsetWeightError('');</span>
+<span class="cstat-no" title="statement not covered" >      if (!record.subsetCount) {</span>
+<span class="cstat-no" title="statement not covered" >        setSubsetCountError(strings.REQUIRED_FIELD);</span>
+<span class="cstat-no" title="statement not covered" >        hasErrors = true;</span>
+      } else <span class="cstat-no" title="statement not covered" >if (record.subsetCount &lt;= 0) {</span>
+<span class="cstat-no" title="statement not covered" >        setSubsetCountError(strings.SUBSET_COUNT_POSITIVE);</span>
+<span class="cstat-no" title="statement not covered" >        hasErrors = true;</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        setSubsetCountError('');</span>
+      }
     }
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    if (quantityChanged &amp;&amp; isByWeight &amp;&amp; !record.subsetCount) {</span>
-<span class="cstat-no" title="statement not covered" >      setSubsetCountError(strings.REQUIRED_FIELD);</span>
-    } else {
-<span class="cstat-no" title="statement not covered" >      setSubsetCountError('');</span>
-    }
-&nbsp;
 <span class="cstat-no" title="statement not covered" >    return !hasErrors;</span>
   };
 &nbsp;
@@ -1206,7 +1211,7 @@ export default function <span class="fstat-no" title="function not covered" >Qua
           /&gt;,
           &lt;Button
             id='saveQuantity'
-            onClick={saveQuantity}
+            onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >void saveQuantity()}</span>
             label={strings.SAVE}
             key='button-2'
             disabled={!hasChanged}
@@ -1241,6 +1246,7 @@ export default function <span class="fstat-no" title="function not covered" >Qua
                 id='seedsQuantity'
                 onChange={<span class="fstat-no" title="function not covered" >(v</span>alue) =&gt; <span class="cstat-no" title="statement not covered" >onChangeRemainingQuantity('seedsQuantity', Number(value))}</span>
                 type='number'
+                min={0}
                 value={
                   record.remainingQuantity?.units === 'Seeds'
                     ? record.remainingQuantity?.quantity.toString()
@@ -1365,7 +1371,7 @@ export default function <span class="fstat-no" title="function not covered" >Qua
                       id='subsetCount'
                       onChange={<span class="fstat-no" title="function not covered" >(v</span>alue) =&gt; <span class="cstat-no" title="statement not covered" >onChangeSubsetCount(value as number)}</span>
                       type='number'
-                      min={0}
+                      min={1}
                       disabledCharacters={['.', ',', '-']}
                       value={record.subsetCount}
                       errorText={subsetCountError}
@@ -1387,7 +1393,7 @@ export default function <span class="fstat-no" title="function not covered" >Qua
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

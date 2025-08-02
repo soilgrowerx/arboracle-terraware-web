@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/22</span>
+                <span class='fraction'>0/24</span>
             </div>
         
             
@@ -242,7 +242,8 @@
 <a name='L177'></a><a href='#L177'>177</a>
 <a name='L178'></a><a href='#L178'>178</a>
 <a name='L179'></a><a href='#L179'>179</a>
-<a name='L180'></a><a href='#L180'>180</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -366,6 +367,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -422,7 +424,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 &nbsp;
 import { BusySpinner } from '@terraware/web-components';
 import _ from 'lodash';
@@ -462,12 +464,12 @@ export type Props = {
 &nbsp;
 const DocumentProducerProvider = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> children }: Props) =&gt; {</span>
   const dispatch = <span class="cstat-no" title="statement not covered" >useAppDispatch();</span>
-  const pathParams = <span class="cstat-no" title="statement not covered" >useParams&lt;{ documentId: string }&gt;();</span>
+  const pathParams = <span class="cstat-no" title="statement not covered" >useParams&lt;{ documentId: string; projectId: string }&gt;();</span>
   const documentId = <span class="cstat-no" title="statement not covered" >Number(pathParams.documentId || -1);</span>
 &nbsp;
   const [document, setDocument] = <span class="cstat-no" title="statement not covered" >useState&lt;DocumentType&gt;();</span>
 &nbsp;
-  const projectId = <span class="cstat-no" title="statement not covered" >document?.projectId ?? -1;</span>
+  const projectId = <span class="cstat-no" title="statement not covered" >(pathParams.projectId ? Number(pathParams.projectId) : document?.projectId) ?? -1;</span>
   const documentTemplateId = <span class="cstat-no" title="statement not covered" >document?.documentTemplateId ?? -1;</span>
   const documentTemplate = <span class="cstat-no" title="statement not covered" >useAppSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >selectDocumentTemplate(state, documentTemplateId))</span>;</span>
 &nbsp;
@@ -496,20 +498,20 @@ const DocumentProducerProvider = <span class="cstat-no" title="statement not cov
   const isLoading = <span class="cstat-no" title="statement not covered" >status === 'pending';</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(requestListDocumentTemplates());</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(requestListAllVariables());</span>
+<span class="cstat-no" title="statement not covered" >    void dispatch(requestListDocumentTemplates());</span>
+<span class="cstat-no" title="statement not covered" >    void dispatch(requestListAllVariables());</span>
   }, [dispatch]);
 &nbsp;
   const reloadDocument = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (documentId !== -1) {</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestGetDocument(documentId));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestGetDocument(documentId));</span>
     }
   }, [dispatch, documentId]);
 &nbsp;
   const loadDocument = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (documentId !== -1) {</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestGetDocument(documentId));</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestListDocumentVariables(documentId));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestGetDocument(documentId));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestListDocumentVariables(documentId));</span>
     }
   }, [dispatch, documentId]);
 &nbsp;
@@ -519,8 +521,8 @@ const DocumentProducerProvider = <span class="cstat-no" title="statement not cov
 &nbsp;
   const loadVariables = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (projectId !== -1) {</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestListVariablesOwners(projectId));</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestListVariablesValues({ projectId }));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestListVariablesOwners(projectId));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestListVariablesValues({ projectId }));</span>
     }
   }, [dispatch, projectId]);
 &nbsp;
@@ -535,7 +537,7 @@ const DocumentProducerProvider = <span class="cstat-no" title="statement not cov
 &nbsp;
   const reloadVariables = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (projectId !== -1) {</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestListVariablesValues({ projectId }));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestListVariablesValues({ projectId }));</span>
     }
   }, [dispatch, projectId]);
 &nbsp;
@@ -553,11 +555,12 @@ const DocumentProducerProvider = <span class="cstat-no" title="statement not cov
     getUsedSections,
     isLoading: true,
     projectId,
-    // eslint-disable-next-line no-empty
-    reload: <span class="fstat-no" title="function not covered" >()</span> =&gt; {},
     variablesOwners,
+    /* eslint-disable @typescript-eslint/no-empty-function */
+    reload: <span class="fstat-no" title="function not covered" >()</span> =&gt; {},
     reloadVariables: <span class="fstat-no" title="function not covered" >()</span> =&gt; {},
     reloadDocument: <span class="fstat-no" title="function not covered" >()</span> =&gt; {},
+    /* eslint-enable @typescript-eslint/no-empty-function */
   });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
@@ -607,7 +610,7 @@ export default DocumentProducerProvider;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

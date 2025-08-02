@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>0/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>0/16</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>0/20</span>
             </div>
         
             
@@ -167,10 +167,7 @@
 <a name='L102'></a><a href='#L102'>102</a>
 <a name='L103'></a><a href='#L103'>103</a>
 <a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L105'></a><a href='#L105'>105</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -188,10 +185,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -202,6 +195,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -228,7 +223,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -295,11 +289,7 @@ import useStickyTabs from 'src/utils/useStickyTabs';
 &nbsp;
 const AcceleratorReportsView = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
   const { activeLocale } = <span class="cstat-no" title="statement not covered" >useLocalization();</span>
-  const {
-    currentParticipantProject,
-    projectsWithModules: moduleProjects,
-    setCurrentParticipantProject,
-  } = <span class="cstat-no" title="statement not covered" >useParticipantData();</span>
+  const { currentParticipantProject, allParticipantProjects, setCurrentParticipantProject } = <span class="cstat-no" title="statement not covered" >useParticipantData();</span>
 &nbsp;
   const [projectFilter, setProjectFilter] = <span class="cstat-no" title="statement not covered" >useState&lt;{ projectId?: number | string }&gt;({});</span>
 &nbsp;
@@ -312,8 +302,10 @@ const AcceleratorReportsView = <span class="cstat-no" title="statement not cover
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (projectFilter.projectId) {</span>
 <span class="cstat-no" title="statement not covered" >      setCurrentParticipantProject(projectFilter.projectId);</span>
+    } else <span class="cstat-no" title="statement not covered" >if (allParticipantProjects.length === 1) {</span>
+<span class="cstat-no" title="statement not covered" >      setCurrentParticipantProject(allParticipantProjects[0].id);</span>
     }
-  }, [projectFilter?.projectId]);
+  }, [allParticipantProjects, projectFilter.projectId, setCurrentParticipantProject]);
 &nbsp;
   const tabs = <span class="cstat-no" title="statement not covered" >useMemo(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (!activeLocale) {</span>
@@ -332,13 +324,12 @@ const AcceleratorReportsView = <span class="cstat-no" title="statement not cover
         children: &lt;AcceleratorReportTargetsTable /&gt;,
       },
     ];
-  }, [activeLocale, projectFilter?.projectId]);
+  }, [activeLocale]);
 &nbsp;
-  const { activeTab, onTabChange } = <span class="cstat-no" title="statement not covered" >useStickyTabs({</span>
+  const { activeTab, onChangeTab } = <span class="cstat-no" title="statement not covered" >useStickyTabs({</span>
     defaultTab: 'reports',
     tabs,
     viewIdentifier: 'accelerator-reports',
-    keepQuery: true,
   });
 &nbsp;
   const PageHeaderLeftComponent = <span class="cstat-no" title="statement not covered" >useMemo(</span>
@@ -349,35 +340,35 @@ const AcceleratorReportsView = <span class="cstat-no" title="statement not cover
             &lt;Grid item&gt;
               &lt;Separator height={'40px'} /&gt;
             &lt;/Grid&gt;
-            {moduleProjects?.length &gt; 0 &amp;&amp; (
+            {allParticipantProjects?.length &gt; 0 &amp;&amp; (
               &lt;Grid item&gt;
-                {moduleProjects?.length &gt; 1 ? (
+                {allParticipantProjects?.length &gt; 1 ? (
                   &lt;Box display='flex'&gt;
                     &lt;Typography sx={{ lineHeight: '40px', marginRight: theme.spacing(1.5) }} component={'span'}&gt;
                       {strings.PROJECT}
                     &lt;/Typography&gt;
                     &lt;ProjectsDropdown
-                      availableProjects={moduleProjects}
+                      availableProjects={allParticipantProjects}
                       label=''
                       record={projectFilter}
                       setRecord={setProjectFilter}
                     /&gt;
                   &lt;/Box&gt;
                 ) : (
-                  &lt;Typography&gt;{moduleProjects[0].name}&lt;/Typography&gt;
+                  &lt;Typography&gt;{allParticipantProjects[0].name}&lt;/Typography&gt;
                 )}
               &lt;/Grid&gt;
             )}
           &lt;/Grid&gt;
         &lt;/&gt;
       ) : undefined,
-    [activeLocale, moduleProjects, projectFilter?.projectId]
+    [activeLocale, allParticipantProjects, projectFilter]
   );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;Page hierarchicalCrumbs={false} leftComponent={PageHeaderLeftComponent} title={strings.REPORTS}&gt;
       &lt;Box display='flex' flexDirection='column' flexGrow={1}&gt;
-        &lt;Tabs activeTab={activeTab} onTabChange={onTabChange} tabs={tabs} /&gt;
+        &lt;Tabs activeTab={activeTab} onChangeTab={onChangeTab} tabs={tabs} /&gt;
       &lt;/Box&gt;
     &lt;/Page&gt;
   );
@@ -391,7 +382,7 @@ export default AcceleratorReportsView;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

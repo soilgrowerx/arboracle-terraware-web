@@ -294,7 +294,8 @@
 <a name='L229'></a><a href='#L229'>229</a>
 <a name='L230'></a><a href='#L230'>230</a>
 <a name='L231'></a><a href='#L231'>231</a>
-<a name='L232'></a><a href='#L232'>232</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -326,12 +327,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -344,9 +347,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -377,11 +383,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -525,8 +527,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 &nbsp;
 import { Box, Typography, useTheme } from '@mui/material';
 import { DateTime } from 'luxon';
@@ -536,6 +538,7 @@ import PageForm from 'src/components/common/PageForm';
 import TfMain from 'src/components/common/TfMain';
 import { APP_PATHS } from 'src/constants';
 import useGetModule from 'src/hooks/useGetModule';
+import { useSyncNavigate } from 'src/hooks/useSyncNavigate';
 import {
   requestCreateModuleEvent,
   requestEventDeleteMany,
@@ -558,7 +561,7 @@ import EventsTable from './EventsTable';
 &nbsp;
 export default function <span class="fstat-no" title="function not covered" >EventEditView(</span>): JSX.Element {
   const theme = <span class="cstat-no" title="statement not covered" >useTheme();</span>
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
+  const navigate = <span class="cstat-no" title="statement not covered" >useSyncNavigate();</span>
   const { moduleId } = <span class="cstat-no" title="statement not covered" >useParams&lt;{ moduleId: string }&gt;();</span>
 &nbsp;
   const { events, module } = <span class="cstat-no" title="statement not covered" >useGetModule(Number(moduleId));</span>
@@ -578,11 +581,15 @@ export default function <span class="fstat-no" title="function not covered" >Eve
   const responseDelete = <span class="cstat-no" title="statement not covered" >useAppSelector(selectDeleteManyEvents(deleteEventRequestId));</span>
   const snackbar = <span class="cstat-no" title="statement not covered" >useSnackbar();</span>
 &nbsp;
+  const goToEvent = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    navigate(APP_PATHS.ACCELERATOR_MODULE_CONTENT.replace(':moduleId', moduleId || ''));</span>
+  }, [navigate, moduleId]);
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (responseProjects?.status === 'error') {</span>
 <span class="cstat-no" title="statement not covered" >      snackbar.toastError();</span>
     }
-  }, [responseProjects]);
+  }, [responseProjects, snackbar]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (reponseCreate?.status === 'error') {</span>
@@ -591,7 +598,7 @@ export default function <span class="fstat-no" title="function not covered" >Eve
 <span class="cstat-no" title="statement not covered" >    if (reponseCreate?.status === 'success') {</span>
 <span class="cstat-no" title="statement not covered" >      goToEvent();</span>
     }
-  }, [reponseCreate]);
+  }, [reponseCreate, goToEvent, snackbar]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (reponseUpdate?.status === 'error') {</span>
@@ -600,7 +607,7 @@ export default function <span class="fstat-no" title="function not covered" >Eve
 <span class="cstat-no" title="statement not covered" >    if (reponseUpdate?.status === 'success') {</span>
 <span class="cstat-no" title="statement not covered" >      goToEvent();</span>
     }
-  }, [reponseUpdate]);
+  }, [reponseUpdate, goToEvent, snackbar]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (responseDelete?.status === 'error') {</span>
@@ -609,11 +616,7 @@ export default function <span class="fstat-no" title="function not covered" >Eve
 <span class="cstat-no" title="statement not covered" >    if (responseDelete?.status === 'success') {</span>
 <span class="cstat-no" title="statement not covered" >      goToEvent();</span>
     }
-  }, [responseDelete]);
-&nbsp;
-  const goToEvent = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    navigate(APP_PATHS.ACCELERATOR_MODULE_CONTENT.replace(':moduleId', moduleId || ''));</span>
-  };
+  }, [responseDelete, goToEvent, snackbar]);
 &nbsp;
   const save = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     const allEventIdsToDelete = <span class="cstat-no" title="statement not covered" >eventsToDelete?.map(<span class="fstat-no" title="function not covered" >(e</span>td) =&gt; <span class="cstat-no" title="statement not covered" >etd.id)</span>;</span>
@@ -672,7 +675,7 @@ export default function <span class="fstat-no" title="function not covered" >Eve
   };
 &nbsp;
   const getTitleForType = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    //type: 'One-on-One Session' | 'Workshop' | 'Live Session' | 'Recorded Session';
+    // type: 'One-on-One Session' | 'Workshop' | 'Live Session' | 'Recorded Session';
 <span class="cstat-no" title="statement not covered" >    switch (eventType) {</span>
       case 'one-on-one': {
 <span class="cstat-no" title="statement not covered" >        return strings.ONE_ON_ONE_SESSION;</span>
@@ -763,7 +766,7 @@ export default function <span class="fstat-no" title="function not covered" >Eve
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

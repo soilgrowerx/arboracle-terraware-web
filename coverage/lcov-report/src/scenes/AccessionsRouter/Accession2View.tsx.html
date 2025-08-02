@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/153</span>
+                <span class='fraction'>0/148</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/175</span>
+                <span class='fraction'>0/179</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/153</span>
+                <span class='fraction'>0/148</span>
             </div>
         
             
@@ -776,16 +776,7 @@
 <a name='L711'></a><a href='#L711'>711</a>
 <a name='L712'></a><a href='#L712'>712</a>
 <a name='L713'></a><a href='#L713'>713</a>
-<a name='L714'></a><a href='#L714'>714</a>
-<a name='L715'></a><a href='#L715'>715</a>
-<a name='L716'></a><a href='#L716'>716</a>
-<a name='L717'></a><a href='#L717'>717</a>
-<a name='L718'></a><a href='#L718'>718</a>
-<a name='L719'></a><a href='#L719'>719</a>
-<a name='L720'></a><a href='#L720'>720</a>
-<a name='L721'></a><a href='#L721'>721</a>
-<a name='L722'></a><a href='#L722'>722</a>
-<a name='L723'></a><a href='#L723'>723</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L714'></a><a href='#L714'>714</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -830,9 +821,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -859,8 +847,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -879,6 +865,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -965,12 +952,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1410,7 +1392,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1508,7 +1490,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 &nbsp;
 import { Box, Grid, Link as LinkMUI, Typography, useTheme } from '@mui/material';
 import { Button, DropdownItem, Icon, Tabs } from '@terraware/web-components';
@@ -1520,6 +1502,8 @@ import PageSnackbar from 'src/components/PageSnackbar';
 import ProjectOverviewItemCard from 'src/components/ProjectOverviewItemCard';
 import BackToLink from 'src/components/common/BackToLink';
 import OptionsMenu from 'src/components/common/OptionsMenu';
+import OverviewItemCard from 'src/components/common/OverviewItemCard';
+import PageHeaderWrapper from 'src/components/common/PageHeaderWrapper';
 import TfMain from 'src/components/common/TfMain';
 import { APP_PATHS } from 'src/constants';
 import { useLocalization, useUser } from 'src/providers';
@@ -1532,14 +1516,10 @@ import { stateName } from 'src/types/Accession';
 import { getUnitName, isUnitInPreferredSystem } from 'src/units';
 import { getSeedBank, isContributor } from 'src/utils/organization';
 import useDeviceInfo from 'src/utils/useDeviceInfo';
-import useQuery from 'src/utils/useQuery';
 import useSnackbar from 'src/utils/useSnackbar';
-import useStateLocation, { getLocation } from 'src/utils/useStateLocation';
 import useStickyTabs from 'src/utils/useStickyTabs';
 import { useLocationTimeZone } from 'src/utils/useTimeZoneUtils';
 &nbsp;
-import OverviewItemCard from '../../components/common/OverviewItemCard';
-import PageHeaderWrapper from '../../components/common/PageHeaderWrapper';
 import DeleteAccessionModal from './edit/DeleteAccessionModal';
 import EditLocationModal from './edit/EditLocationModal';
 import EditStateModal from './edit/EditStateModal';
@@ -1557,9 +1537,6 @@ export default function <span class="fstat-no" title="function not covered" >Acc
   const { user } = <span class="cstat-no" title="statement not covered" >useUser();</span>
   const { selectedOrganization } = <span class="cstat-no" title="statement not covered" >useOrganization();</span>
   const { userPreferences } = <span class="cstat-no" title="statement not covered" >useUser();</span>
-  const query = <span class="cstat-no" title="statement not covered" >useQuery();</span>
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
-  const location = <span class="cstat-no" title="statement not covered" >useStateLocation();</span>
   const { accessionId } = <span class="cstat-no" title="statement not covered" >useParams&lt;{ accessionId: string }&gt;();</span>
   const [accession, setAccession] = <span class="cstat-no" title="statement not covered" >useState&lt;Accession&gt;();</span>
   const [openEditLocationModal, setOpenEditLocationModal] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
@@ -1601,13 +1578,14 @@ export default function <span class="fstat-no" title="function not covered" >Acc
   };
 &nbsp;
   const seedBankTimeZone = <span class="cstat-no" title="statement not covered" >useMemo(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const facility = <span class="cstat-no" title="statement not covered" >accession?.facilityId</span>
-      ? FacilityService.getFacility({
-          organization: selectedOrganization,
-          facilityId: accession.facilityId,
-          type: 'Seed Bank',
-        })
-      : undefined;
+    const facility =
+<span class="cstat-no" title="statement not covered" >      accession?.facilityId &amp;&amp; selectedOrganization</span>
+        ? FacilityService.getFacility({
+            organization: selectedOrganization,
+            facilityId: accession.facilityId,
+            type: 'Seed Bank',
+          })
+        : undefined;
     const tz = <span class="cstat-no" title="statement not covered" >locationTimeZone.get(facility);</span>
 <span class="cstat-no" title="statement not covered" >    return tz.id;</span>
   }, [accession?.facilityId, selectedOrganization, locationTimeZone]);
@@ -1630,7 +1608,7 @@ export default function <span class="fstat-no" title="function not covered" >Acc
     };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (accessionId !== undefined) {</span>
-<span class="cstat-no" title="statement not covered" >      populateAccession();</span>
+<span class="cstat-no" title="statement not covered" >      void populateAccession();</span>
     } else {
 <span class="cstat-no" title="statement not covered" >      setAccession(undefined);</span>
     }
@@ -1685,11 +1663,6 @@ export default function <span class="fstat-no" title="function not covered" >Acc
       }
     }
   }, [accession, activeLocale, seedBankTimeZone]);
-&nbsp;
-  const handleChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(n</span>ewValue: string) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    query.set('tab', newValue);</span>
-<span class="cstat-no" title="statement not covered" >    navigate(getLocation(location.pathname, location, query.toString()));</span>
-  };
 &nbsp;
   const linkStyle = <span class="cstat-no" title="statement not covered" >{</span>
     color: themeObj.palette.TwClrTxtBrand,
@@ -1905,12 +1878,12 @@ export default function <span class="fstat-no" title="function not covered" >Acc
         ),
       },
     ];
-  }, [accession, reloadData, themeObj, viabilityEditable, hasPendingTests]);
+  }, [accession, reloadData, activeLocale, themeObj, viabilityEditable, isMobile, hasPendingTests]);
 &nbsp;
-  const { activeTab, onTabChange } = <span class="cstat-no" title="statement not covered" >useStickyTabs({</span>
+  const { activeTab, onChangeTab, setActiveTab } = <span class="cstat-no" title="statement not covered" >useStickyTabs({</span>
     defaultTab: 'detail',
     tabs,
-    viewIdentifier: 'accession-view',
+    viewIdentifier: 'accession',
   });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
@@ -2000,7 +1973,7 @@ export default function <span class="fstat-no" title="function not covered" >Acc
               accession={accession}
               reload={reloadData}
               setNewViabilityTestOpened={setOpenNewViabilityTest}
-              changeTab={handleChange}
+              changeTab={setActiveTab}
               title={accession?.viabilityPercent?.toString() ? strings.EDIT_VIABILITY : strings.ADD_VIABILITY}
             /&gt;
           )}
@@ -2030,7 +2003,7 @@ export default function <span class="fstat-no" title="function not covered" >Acc
               {!isMobile &amp;&amp; userCanEdit &amp;&amp; (
                 &lt;Box display='flex' alignItems='center'&gt;
                   {accession &amp;&amp; isAwaitingCheckin ? (
-                    &lt;Button onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >checkInAccession()}</span> label={strings.CHECK_IN} size='small' /&gt;
+                    &lt;Button onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >void checkInAccession()}</span> label={strings.CHECK_IN} size='small' /&gt;
                   ) : (
                     renderWithdrawalButton()
                   )}
@@ -2046,7 +2019,7 @@ export default function <span class="fstat-no" title="function not covered" >Acc
                 &lt;Box paddingLeft={2} width='100%'&gt;
                   {accession &amp;&amp; isAwaitingCheckin ? (
                     &lt;Button
-                      onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >checkInAccession()}</span>
+                      onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >void checkInAccession()}</span>
                       label={strings.CHECK_IN}
                       size='medium'
                       style={fullSizeButtonStyles}
@@ -2102,7 +2075,7 @@ export default function <span class="fstat-no" title="function not covered" >Acc
               title={strings.LOCATION}
               contents={
                 &lt;Box&gt;
-                  {getSeedBank(selectedOrganization, accession.facilityId)?.name}
+                  {selectedOrganization ? getSeedBank(selectedOrganization, accession.facilityId)?.name : undefined}
                   {accession.subLocation ? ` / ${accession.subLocation}` : ''}
                 &lt;/Box&gt;
               }
@@ -2132,7 +2105,7 @@ export default function <span class="fstat-no" title="function not covered" >Acc
               entity={accession}
               reloadData={reloadData}
               projectAssignPayloadCreator={<span class="fstat-no" title="function not covered" >()</span> =&gt; (<span class="cstat-no" title="statement not covered" >{ accessionIds: [accession.id] })</span>}
-              onUnAssign={onProjectUnAssign}
+              onUnAssign={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >void onProjectUnAssign()}</span>
             /&gt;
           &lt;/Grid&gt;
         )}
@@ -2224,7 +2197,7 @@ export default function <span class="fstat-no" title="function not covered" >Acc
             : {},
         }}
       &gt;
-        &lt;Tabs activeTab={activeTab} onTabChange={onTabChange} tabs={tabs} /&gt;
+        &lt;Tabs activeTab={activeTab} onChangeTab={onChangeTab} tabs={tabs} /&gt;
       &lt;/Box&gt;
     &lt;/TfMain&gt;
   );
@@ -2236,7 +2209,7 @@ export default function <span class="fstat-no" title="function not covered" >Acc
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>0/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
@@ -147,7 +147,10 @@
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,21 +158,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,6 +190,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -244,6 +250,34 @@ import CurrentTimeline from './CurrentTimeline';
 import ListModulesContent from './ListModulesContent';
 import ListViewHeader from './ListViewHeader';
 &nbsp;
+const phases = <span class="cstat-no" title="statement not covered" >[</span>
+  {
+    name: 'Phase 0 - Due Diligence',
+    description:
+      'Submit project-relevant documentation that prove that the statements provided in the ' +
+      'application are truthful and accurate.',
+  },
+  {
+    name: 'Phase 1 - Feasibility Study',
+    description:
+      'Attend 10 weeks of training, and evaluate the strengths and risks of your proposed carbon project ' +
+      'by submitting key information that will also be used to create a Feasibility Study document.',
+  },
+  {
+    name: 'Phase 2 - PDD Writing &amp; Registration',
+    description:
+      'Work toward having a PDA signed, a PDD written, and the PDD registered on Verra (Under Development &amp; Full).',
+  },
+  {
+    name: 'Phase 3 - Implement and Monitor',
+    description: 'Mock description',
+  },
+  {
+    name: 'Phase 4 - Should not be visible',
+    description: 'Mock description',
+  },
+];
+&nbsp;
 export default function <span class="fstat-no" title="function not covered" >ListView(</span>): JSX.Element {
   const theme = <span class="cstat-no" title="statement not covered" >useTheme();</span>
 &nbsp;
@@ -259,33 +293,8 @@ export default function <span class="fstat-no" title="function not covered" >Lis
     'displayed in the To Do list on your Home screen. Please log in to Terraware regularly to check which ' +
     'deliverables are due.';
 &nbsp;
-  const phases = <span class="cstat-no" title="statement not covered" >[</span>
-    {
-      name: 'Phase 0 - Due Diligence',
-      description:
-        'Submit project-relevant documentation that prove that the statements provided in the ' +
-        'application are truthful and accurate.',
-    },
-    {
-      name: 'Phase 1 - Feasibility Study',
-      description:
-        'Attend 10 weeks of training, and evaluate the strengths and risks of your proposed carbon project ' +
-        'by submitting key information that will also be used to create a Feasibility Study document.',
-    },
-    {
-      name: 'Phase 2 - PDD Writing &amp; Registration',
-      description:
-        'Work toward having a PDA signed, a PDD written, and the PDD registered on Verra (Under Development &amp; Full).',
-    },
-    {
-      name: 'Phase 3 - Implement and Monitor',
-      description: 'Mock desription',
-    },
-    {
-      name: 'Phase 4 - Should not be visible',
-      description: 'Mock desription',
-    },
-  ];
+  const dueDiligencePhaseDescription =
+<span class="cstat-no" title="statement not covered" >    'Terraformation conducts due diligence to help the company identify and verify potential partners. Terraformation may be required by law to collect certain information to meet its international compliance obligations. In other instances, Terraformation may be required by investors to collect certain information before they will invest in the project. Finally, some information is required in order to register the project with Verra or another carbon registry.';</span>
 &nbsp;
   const currentPhaseIndex = <span class="cstat-no" title="statement not covered" >useMemo(</span>
 <span class="fstat-no" title="function not covered" >    ()</span> =&gt; <span class="cstat-no" title="statement not covered" >phases.findIndex(<span class="fstat-no" title="function not covered" >(p</span>hase) =&gt; <span class="cstat-no" title="statement not covered" >phase.name === currentParticipant?.cohortPhase)</span>,</span>
@@ -307,7 +316,7 @@ export default function <span class="fstat-no" title="function not covered" >Lis
         &lt;CurrentTimeline steps={phases} currentIndex={currentPhaseIndex} /&gt;
 &nbsp;
         &lt;Box paddingY={theme.spacing(3)} borderBottom={`1px solid ${theme.palette.TwClrBgTertiary}`}&gt;
-          &lt;Typography&gt;{phaseDescription}&lt;/Typography&gt;
+          &lt;Typography&gt;{currentPhaseIndex === 0 ? dueDiligencePhaseDescription : phaseDescription}&lt;/Typography&gt;
         &lt;/Box&gt;
 &nbsp;
         &lt;ListModulesContent /&gt;
@@ -322,7 +331,7 @@ export default function <span class="fstat-no" title="function not covered" >Lis
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

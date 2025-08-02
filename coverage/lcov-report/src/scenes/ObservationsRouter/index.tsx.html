@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/61</span>
+                <span class='fraction'>0/57</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/38</span>
+                <span class='fraction'>0/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/59</span>
+                <span class='fraction'>0/55</span>
             </div>
         
             
@@ -251,19 +251,7 @@
 <a name='L186'></a><a href='#L186'>186</a>
 <a name='L187'></a><a href='#L187'>187</a>
 <a name='L188'></a><a href='#L188'>188</a>
-<a name='L189'></a><a href='#L189'>189</a>
-<a name='L190'></a><a href='#L190'>190</a>
-<a name='L191'></a><a href='#L191'>191</a>
-<a name='L192'></a><a href='#L192'>192</a>
-<a name='L193'></a><a href='#L193'>193</a>
-<a name='L194'></a><a href='#L194'>194</a>
-<a name='L195'></a><a href='#L195'>195</a>
-<a name='L196'></a><a href='#L196'>196</a>
-<a name='L197'></a><a href='#L197'>197</a>
-<a name='L198'></a><a href='#L198'>198</a>
-<a name='L199'></a><a href='#L199'>199</a>
-<a name='L200'></a><a href='#L200'>200</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L189'></a><a href='#L189'>189</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -311,26 +299,15 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -345,6 +322,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -462,7 +440,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 &nbsp;
 import { CircularProgress } from '@mui/material';
 import { Option } from '@terraware/web-components/components/table/types';
@@ -470,30 +448,29 @@ import { Option } from '@terraware/web-components/components/table/types';
 import { FilterField } from 'src/components/common/FilterGroup';
 import { SearchProps } from 'src/components/common/SearchFiltersWrapper';
 import { useLocalization, useOrganization } from 'src/providers';
+import { useSpeciesData } from 'src/providers/Species/SpeciesContext';
 import {
   selectObservationsResults,
   selectObservationsResultsError,
 } from 'src/redux/features/observations/observationsSelectors';
 import {
-  requestAdHocObservationsResults,
+  requestAdHocObservationResults,
   requestObservations,
   requestObservationsResults,
 } from 'src/redux/features/observations/observationsThunks';
-import { selectSpecies, selectSpeciesError } from 'src/redux/features/species/speciesSelectors';
-import { requestSpecies } from 'src/redux/features/species/speciesThunks';
-import { selectPlantingSites, selectPlantingSitesError } from 'src/redux/features/tracking/trackingSelectors';
+import { requestPlantingSites } from 'src/redux/features/tracking/trackingThunks';
 import { useAppDispatch, useAppSelector } from 'src/redux/store';
+import BiomassMeasurementsDetails from 'src/scenes/ObservationsRouter/biomass/BiomassMeasurementsDetails';
 import strings from 'src/strings';
 import { ObservationState, getStatus } from 'src/types/Observations';
 import { FieldOptionsMap, FieldValuesPayload } from 'src/types/Search';
 import { isAdmin } from 'src/utils/organization';
 import useSnackbar from 'src/utils/useSnackbar';
 &nbsp;
-import BiomassMeasurementsDetails from './BiomassMeasurementsDetails';
 import ObservationsHome from './ObservationsHome';
+import ObservationMonitoringPlotDetails from './adhoc';
+import AdHocObservationDetails from './adhoc/AdHocObservationDetails';
 import ObservationDetails from './details';
-import ObservationMonitoringPlotDetails from './plot';
-import AdHocObservationDetails from './plot/AdHocObservationDetails';
 import { RescheduleObservation, ScheduleObservation } from './schedule';
 import ObservationPlantingZoneDetails from './zone';
 &nbsp;
@@ -508,48 +485,38 @@ export default function <span class="fstat-no" title="function not covered" >Obs
   const [dispatched, setDispatched] = <span class="cstat-no" title="statement not covered" >useState&lt;boolean&gt;(false);</span>
   const snackbar = <span class="cstat-no" title="statement not covered" >useSnackbar();</span>
   const dispatch = <span class="cstat-no" title="statement not covered" >useAppDispatch();</span>
+&nbsp;
+  const { reload: reloadSpecies } = <span class="cstat-no" title="statement not covered" >useSpeciesData();</span>
+&nbsp;
   // listen for error
   const observationsResultsError = <span class="cstat-no" title="statement not covered" >useAppSelector(selectObservationsResultsError);</span>
-  const speciesError = <span class="cstat-no" title="statement not covered" >useAppSelector(selectSpeciesError);</span>
-  const plantingSitesError = <span class="cstat-no" title="statement not covered" >useAppSelector(selectPlantingSitesError);</span>
   // listen for data
   const observationsResults = <span class="cstat-no" title="statement not covered" >useAppSelector(selectObservationsResults);</span>
-  const speciesResponse = <span class="cstat-no" title="statement not covered" >useAppSelector(selectSpecies(selectedOrganization.id));</span>
-  const plantingSites = <span class="cstat-no" title="statement not covered" >useAppSelector(selectPlantingSites);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (selectedOrganization.id !== -1 &amp;&amp; !['pending', 'success'].includes(speciesResponse?.status || '')) {</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestSpecies(selectedOrganization.id));</span>
-    }
-  }, [dispatch, selectedOrganization.id]);
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (</span>
-      speciesResponse?.data?.species !== undefined &amp;&amp;
-      plantingSites !== undefined &amp;&amp;
-      !dispatched &amp;&amp;
-      selectedOrganization.id !== -1
-    ) {
+<span class="cstat-no" title="statement not covered" >    if (!dispatched &amp;&amp; selectedOrganization) {</span>
 <span class="cstat-no" title="statement not covered" >      setDispatched(true);</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestObservationsResults(selectedOrganization.id));</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestAdHocObservationsResults(selectedOrganization.id));</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestObservations(selectedOrganization.id));</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(requestObservations(selectedOrganization.id, true));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestPlantingSites(selectedOrganization.id));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestObservationsResults(selectedOrganization.id));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestAdHocObservationResults(selectedOrganization.id));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestObservations(selectedOrganization.id));</span>
+<span class="cstat-no" title="statement not covered" >      void dispatch(requestObservations(selectedOrganization.id, true));</span>
     }
-  }, [dispatch, selectedOrganization.id, speciesResponse?.data?.species, plantingSites, dispatched]);
+  }, [dispatch, dispatched, selectedOrganization]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (observationsResultsError || speciesError || plantingSitesError) {</span>
+<span class="cstat-no" title="statement not covered" >    if (observationsResultsError) {</span>
 <span class="cstat-no" title="statement not covered" >      snackbar.toastError();</span>
     }
-  }, [snackbar, observationsResultsError, speciesError, plantingSitesError]);
+  }, [snackbar, observationsResultsError]);
 &nbsp;
-  const reload = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const reload = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    reloadSpecies();</span>
 <span class="cstat-no" title="statement not covered" >    setDispatched(false);</span>
-  };
+  }, [reloadSpecies]);
 &nbsp;
   // show spinner while initializing data
-<span class="cstat-no" title="statement not covered" >  if (observationsResults === undefined &amp;&amp; !(observationsResultsError || speciesError || plantingSitesError)) {</span>
+<span class="cstat-no" title="statement not covered" >  if (observationsResults === undefined &amp;&amp; !observationsResultsError) {</span>
 <span class="cstat-no" title="statement not covered" >    return &lt;CircularProgress sx={{ margin: 'auto' }} /&gt;;</span>
   }
 &nbsp;
@@ -627,11 +594,11 @@ const ObservationsInnerRouter = <span class="cstat-no" title="statement not cove
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;Routes&gt;
-      {scheduleObservationsEnabled &amp;&amp; &lt;Route path={'schedule/:observationId'} element={&lt;RescheduleObservation /&gt;} /&gt;}
+      {scheduleObservationsEnabled &amp;&amp; &lt;Route path={'/schedule/:observationId'} element={&lt;RescheduleObservation /&gt;} /&gt;}
       {scheduleObservationsEnabled &amp;&amp; &lt;Route path={'/schedule'} element={&lt;ScheduleObservation /&gt;} /&gt;}
       &lt;Route
         path={'/:plantingSiteId/results/:observationId/biomassMeasurements/:monitoringPlotId'}
-        element={&lt;BiomassMeasurementsDetails /&gt;}
+        element={&lt;BiomassMeasurementsDetails reload={reload} /&gt;}
       /&gt;
       &lt;Route
         path={'/:plantingSiteId/results/:observationId/zone/:plantingZoneName/plot/:monitoringPlotId'}
@@ -667,7 +634,7 @@ const ObservationsInnerRouter = <span class="cstat-no" title="statement not cove
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

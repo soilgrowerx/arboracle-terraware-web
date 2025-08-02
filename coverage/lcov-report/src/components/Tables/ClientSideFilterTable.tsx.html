@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/63</span>
+                <span class='fraction'>0/65</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/50</span>
+                <span class='fraction'>0/54</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>0/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/62</span>
+                <span class='fraction'>0/63</span>
             </div>
         
             
@@ -316,10 +316,8 @@
 <a name='L251'></a><a href='#L251'>251</a>
 <a name='L252'></a><a href='#L252'>252</a>
 <a name='L253'></a><a href='#L253'>253</a>
-<a name='L254'></a><a href='#L254'>254</a>
-<a name='L255'></a><a href='#L255'>255</a>
-<a name='L256'></a><a href='#L256'>256</a>
-<a name='L257'></a><a href='#L257'>257</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L254'></a><a href='#L254'>254</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -529,12 +527,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -560,7 +554,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -588,6 +582,7 @@ import SearchFiltersWrapperV2, {
 import { defaultSearchNodeCreator } from 'src/components/common/SearchFiltersWrapperV2/FeaturedFilters';
 import { default as OrderPreservedTable, OrderPreservedTablePropsFull } from 'src/components/common/table';
 import TableSettingsButton from 'src/components/common/table/TableSettingsButton';
+import { DEFAULT_SEARCH_DEBOUNCE_MS } from 'src/constants';
 import { useLocalization } from 'src/providers';
 import { FieldNodePayload, SearchNodePayload, SearchSortOrder } from 'src/types/Search';
 import { useSessionFilters } from 'src/utils/filterHooks/useSessionFilters';
@@ -599,7 +594,7 @@ export interface ClientSideFilterTableProps
   extends Omit&lt;OrderPreservedTablePropsFull&lt;TableRowType&gt;, 'columns' | 'orderBy'&gt; {
   busy?: boolean;
   clientSortedFields?: string[];
-  columns: (activeLocale: string | null) =&gt; TableColumnType[];
+  columns: TableColumnType[] | ((activeLocale: string | null) =&gt; TableColumnType[]);
   defaultSortOrder: SearchSortOrder;
   extraComponent?: React.ReactNode;
   extraTableFilters?: SearchNodePayload[];
@@ -641,7 +636,7 @@ const ClientSideFilterTable = <span class="cstat-no" title="statement not covere
 &nbsp;
   const [filters, setFilters] = <span class="cstat-no" title="statement not covered" >useState&lt;Record&lt;string, SearchNodePayload&gt;&gt;({});</span>
   const [searchValue, setSearchValue] = <span class="cstat-no" title="statement not covered" >useState('');</span>
-  const debouncedSearchTerm = <span class="cstat-no" title="statement not covered" >useDebounce(searchValue, 250);</span>
+  const debouncedSearchTerm = <span class="cstat-no" title="statement not covered" >useDebounce(searchValue, DEFAULT_SEARCH_DEBOUNCE_MS);</span>
   const [searchSortOrder, setSearchSortOrder] = <span class="cstat-no" title="statement not covered" >useState&lt;SearchSortOrder | undefined&gt;(defaultSortOrder);</span>
   const { sessionFilters } = <span class="cstat-no" title="statement not covered" >useSessionFilters(id);</span>
 &nbsp;
@@ -763,7 +758,7 @@ const ClientSideFilterTable = <span class="cstat-no" title="statement not covere
 &nbsp;
   const _filteredSortedRows = <span class="cstat-no" title="statement not covered" >useMemo(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     const search: SearchNodePayload = <span class="cstat-no" title="statement not covered" >getSearchPayload();</span>
-    const numberFields = <span class="cstat-no" title="statement not covered" >columns(activeLocale)</span>
+    const numberFields = <span class="cstat-no" title="statement not covered" >(typeof columns === 'function' ? columns(activeLocale) : columns)</span>
       .filter(<span class="fstat-no" title="function not covered" >(c</span>ol) =&gt; <span class="cstat-no" title="statement not covered" >col.type === 'number')</span>
       .map(<span class="fstat-no" title="function not covered" >(c</span>ol) =&gt; <span class="cstat-no" title="statement not covered" >col.key)</span>;
 &nbsp;
@@ -772,7 +767,7 @@ const ClientSideFilterTable = <span class="cstat-no" title="statement not covere
 <span class="cstat-no" title="statement not covered" >      searchOrderConfig = {</span>
         locale: activeLocale,
         sortOrder: searchSortOrder,
-        numberFields: numberFields,
+        numberFields,
       };
     }
 &nbsp;
@@ -783,16 +778,12 @@ const ClientSideFilterTable = <span class="cstat-no" title="statement not covere
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return rows;</span>
-  }, [
-    activeLocale,
-    debouncedSearchTerm,
-    extraTableFilters,
-    filters,
-    fuzzySearchColumns,
-    getSearchPayload,
-    rows,
-    searchSortOrder,
-  ]);
+  }, [activeLocale, columns, getSearchPayload, rows, searchAndSort, searchSortOrder]);
+&nbsp;
+  const tableColumns = <span class="cstat-no" title="statement not covered" >useMemo(</span>
+<span class="fstat-no" title="function not covered" >    ()</span> =&gt; (<span class="cstat-no" title="statement not covered" >typeof columns === 'function' ? <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >columns(activeLocale) </span>: columns)</span>,
+    [activeLocale, columns]
+  );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;Container disableGutters maxWidth={false} sx={{ padding: 0 }}&gt;
@@ -816,7 +807,7 @@ const ClientSideFilterTable = <span class="cstat-no" title="statement not covere
         &lt;Grid item xs={12}&gt;
           &lt;OrderPreservedTable
             {...tableProps}
-            columns={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >columns(activeLocale)}</span>
+            columns={tableColumns}
             id={id}
             isPresorted={!!searchSortOrder}
             order={searchSortOrder?.direction === 'Ascending' ? 'asc' : 'desc'}
@@ -838,7 +829,7 @@ export default ClientSideFilterTable;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

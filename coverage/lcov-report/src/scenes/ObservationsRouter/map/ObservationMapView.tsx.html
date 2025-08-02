@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/96</span>
+                <span class='fraction'>0/97</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/89</span>
+                <span class='fraction'>0/93</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/35</span>
+                <span class='fraction'>0/34</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/93</span>
+                <span class='fraction'>0/94</span>
             </div>
         
             
@@ -359,7 +359,12 @@
 <a name='L294'></a><a href='#L294'>294</a>
 <a name='L295'></a><a href='#L295'>295</a>
 <a name='L296'></a><a href='#L296'>296</a>
-<a name='L297'></a><a href='#L297'>297</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -399,6 +404,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -407,6 +413,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -550,6 +557,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -560,6 +568,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -582,6 +591,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -606,7 +616,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -658,6 +668,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useCallback, useEffect, useMemo, useState } from 'react';
 &nbsp;
 import { Box } from '@mui/material';
+import { useDeviceInfo } from '@terraware/web-components/utils';
 &nbsp;
 import { PlantingSiteMap } from 'src/components/Map';
 import MapDateSelect from 'src/components/common/MapDateSelect';
@@ -683,14 +694,14 @@ import { regexMatch } from 'src/utils/search';
 type ObservationMapViewProps = SearchProps &amp; {
   hideDate?: boolean;
   observationsResults?: ObservationResults[];
-  adHocObservationsResults?: AdHocObservationResults[];
+  adHocObservationResults?: AdHocObservationResults[];
   selectedPlantingSite: PlantingSite;
 };
 &nbsp;
 export default function <span class="fstat-no" title="function not covered" >ObservationMapView(</span>{
   hideDate,
   observationsResults,
-  adHocObservationsResults,
+  adHocObservationResults,
   search,
   filtersProps,
   selectedPlantingSite,
@@ -703,6 +714,7 @@ export default function <span class="fstat-no" title="function not covered" >Obs
   const [plantingSiteHistory, setPlantingSiteHistory] = <span class="cstat-no" title="statement not covered" >useState&lt;PlantingSiteHistory&gt;();</span>
   const [selectedObservation, setSelectedObservation] = <span class="cstat-no" title="statement not covered" >useState&lt;ObservationResults&gt;();</span>
   const [selectedAdHocObservation, setSelectedAdHocObservation] = <span class="cstat-no" title="statement not covered" >useState&lt;AdHocObservationResults&gt;();</span>
+  const { isDesktop } = <span class="cstat-no" title="statement not covered" >useDeviceInfo();</span>
 &nbsp;
   const observations: Observation[] | undefined = <span class="cstat-no" title="statement not covered" >useAppSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt;</span>
 <span class="cstat-no" title="statement not covered" >    selectPlantingSiteObservations(state, selectedPlantingSite.id)</span>
@@ -714,7 +726,7 @@ export default function <span class="fstat-no" title="function not covered" >Obs
 &nbsp;
   const observationsDates = <span class="cstat-no" title="statement not covered" >useMemo(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     const uniqueDates = <span class="cstat-no" title="statement not covered" >new Set(observationsResults?.map(<span class="fstat-no" title="function not covered" >(o</span>bs) =&gt; <span class="cstat-no" title="statement not covered" >obs.completedTime || obs.startDate)</span>);</span>
-<span class="cstat-no" title="statement not covered" >    adHocObservationsResults?.forEach(<span class="fstat-no" title="function not covered" >(o</span>bs) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    adHocObservationResults?.forEach(<span class="fstat-no" title="function not covered" >(o</span>bs) =&gt; {</span>
       const dateToUse = <span class="cstat-no" title="statement not covered" >obs.completedTime ? obs.completedTime : obs.startDate;</span>
 <span class="cstat-no" title="statement not covered" >      uniqueDates.add(dateToUse);</span>
     });
@@ -723,7 +735,7 @@ export default function <span class="fstat-no" title="function not covered" >Obs
       ?.filter(<span class="fstat-no" title="function not covered" >(t</span>ime) =&gt; <span class="cstat-no" title="statement not covered" >time)</span>
       ?.map(<span class="fstat-no" title="function not covered" >(t</span>ime) =&gt; <span class="cstat-no" title="statement not covered" >time)</span>
       ?.sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; (<span class="cstat-no" title="statement not covered" >Date.parse(a) &gt; Date.parse(b) ? 1 : -1)</span>);
-  }, [observationsResults, adHocObservationsResults]);
+  }, [observationsResults, adHocObservationResults]);
 &nbsp;
   const [selectedObservationDate, setSelectedObservationDate] = <span class="cstat-no" title="statement not covered" >useState&lt;string | undefined&gt;();</span>
 &nbsp;
@@ -755,13 +767,13 @@ export default function <span class="fstat-no" title="function not covered" >Obs
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    setSelectedObservation(selObservation);</span>
 &nbsp;
-    const selAdHocObservation = <span class="cstat-no" title="statement not covered" >adHocObservationsResults?.find(<span class="fstat-no" title="function not covered" >(o</span>bs) =&gt; {</span>
+    const selAdHocObservation = <span class="cstat-no" title="statement not covered" >adHocObservationResults?.find(<span class="fstat-no" title="function not covered" >(o</span>bs) =&gt; {</span>
       const dateToCheck = <span class="cstat-no" title="statement not covered" >obs.completedTime ? obs.completedTime : obs.startDate;</span>
 <span class="cstat-no" title="statement not covered" >      return dateToCheck === selectedObservationDate;</span>
     });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    setSelectedAdHocObservation(selAdHocObservation);</span>
-  }, [observationsResults, adHocObservationsResults, selectedPlantingSite, selectedObservationDate]);
+  }, [observationsResults, adHocObservationResults, selectedPlantingSite, selectedObservationDate]);
 &nbsp;
   const observationData = <span class="cstat-no" title="statement not covered" >useMemo(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     let observationToUse = <span class="cstat-no" title="statement not covered" >selectedObservation || selectedAdHocObservation;</span>
@@ -775,7 +787,7 @@ export default function <span class="fstat-no" title="function not covered" >Obs
       observations.find(<span class="fstat-no" title="function not covered" >(o</span>bv) =&gt; <span class="cstat-no" title="statement not covered" >obv.id === observationToUse?.observationId)</span> ||
       adHocObservations.find(<span class="fstat-no" title="function not covered" >(o</span>bv) =&gt; <span class="cstat-no" title="statement not covered" >obv.id === observationToUse?.observationId)</span>
     );
-  }, [observations, selectedObservation, selectedAdHocObservation]);
+  }, [adHocObservations, observations, selectedObservation, selectedAdHocObservation]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (observationData) {</span>
@@ -784,7 +796,7 @@ export default function <span class="fstat-no" title="function not covered" >Obs
         const requestObservationHistory = <span class="cstat-no" title="statement not covered" >dispatch(</span>
           requestGetPlantingSiteHistory({
             plantingSiteId: selectedPlantingSite.id,
-            historyId: historyId,
+            historyId,
           })
         );
 <span class="cstat-no" title="statement not covered" >        setRequestId(requestObservationHistory.requestId);</span>
@@ -792,7 +804,7 @@ export default function <span class="fstat-no" title="function not covered" >Obs
     } else {
 <span class="cstat-no" title="statement not covered" >      setRequestId('');</span>
     }
-  }, [observationData]);
+  }, [dispatch, observationData, selectedPlantingSite]);
 &nbsp;
   const plantingSiteMapData: MapSourceBaseData | undefined = <span class="cstat-no" title="statement not covered" >useMemo(</span>
 <span class="fstat-no" title="function not covered" >    ()</span> =&gt; <span class="cstat-no" title="statement not covered" >MapService.getMapDataFromPlantingSite(selectedPlantingSite)?.site,</span>
@@ -850,12 +862,14 @@ export default function <span class="fstat-no" title="function not covered" >Obs
     Zones: strings.ZONES,
     'Sub-Zones': strings.SUBZONES,
     'Monitoring Plots': strings.MONITORING_PLOTS,
+    'Project Zones': strings.PROJECT_ZONES,
   };
 &nbsp;
   const hasSearchCriteria = <span class="cstat-no" title="statement not covered" >search.trim() || filterZoneNames.length;</span>
 &nbsp;
   const contextRenderer = <span class="cstat-no" title="statement not covered" >useCallback(</span>
 <span class="fstat-no" title="function not covered" >    (p</span>roperties: MapSourceProperties): JSX.Element | null =&gt; {
+      const showReassignmentButton = <span class="cstat-no" title="statement not covered" >properties.type === 'temporaryPlot' || properties.type === 'permanentPlot';</span>
       let entity: any;
 <span class="cstat-no" title="statement not covered" >      if (properties.type === 'site') {</span>
 <span class="cstat-no" title="statement not covered" >        entity = selectedObservation;</span>
@@ -884,14 +898,15 @@ export default function <span class="fstat-no" title="function not covered" >Obs
           observationState={selectedObservation?.state}
           plantingSiteId={selectedPlantingSite.id}
           title={`${properties.name}${properties.type === 'temporaryPlot' ? ` (${strings.TEMPORARY})` : properties.type === 'adHocPlot' ? ` (${strings.AD_HOC})` : properties.type === 'permanentPlot' ? ` (${strings.PERMANENT})` : ''}`}
+          showReassignmentButton={showReassignmentButton}
         /&gt;
       );
     },
-    [selectedObservation, selectedPlantingSite, plantingSiteHistory]
+    [selectedAdHocObservation, selectedObservation, selectedPlantingSite, plantingSiteHistory]
   );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;Box display='flex' flexDirection='column' flexGrow={1}&gt;
+    &lt;Box display='flex' flexDirection={isDesktop ? 'row' : 'column-reverse'} flexGrow={1}&gt;
       &lt;PlantingSiteMapLegend options={['site', 'zone', 'permanentPlot', 'temporaryPlot', 'adHocPlot']} /&gt;
       &lt;Box display='flex' sx={{ flexGrow: 1 }}&gt;
         {mapData.site &amp;&amp; (
@@ -902,7 +917,7 @@ export default function <span class="fstat-no" title="function not covered" >Obs
             topRightMapControl={
               &lt;MapLayerSelect
                 initialSelection={layerOptions}
-                onUpdateSelection={<span class="fstat-no" title="function not covered" >(s</span>election) =&gt; <span class="cstat-no" title="statement not covered" >setIncludedLayers(selection)}</span>
+                onUpdateSelection={setIncludedLayers}
                 menuSections={[
                   layerOptions.map(<span class="fstat-no" title="function not covered" >(o</span>pt) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
                     label: layerOptionLabels[opt],
@@ -958,7 +973,7 @@ export default function <span class="fstat-no" title="function not covered" >Obs
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

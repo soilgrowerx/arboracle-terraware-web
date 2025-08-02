@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/42</span>
+                <span class='fraction'>0/40</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/39</span>
+                <span class='fraction'>0/38</span>
             </div>
         
             
@@ -225,8 +225,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -297,6 +295,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -309,7 +309,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect, useMemo, useState } from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useMemo } from 'react';
 &nbsp;
 import { TableColumnType } from '@terraware/web-components';
 &nbsp;
@@ -320,7 +320,7 @@ import { Batch, NurseryWithdrawal } from 'src/types/Batch';
 import { Species } from 'src/types/Species';
 import { Delivery } from 'src/types/Tracking';
 import { batchToSpecies } from 'src/utils/batch';
-import { useNumberFormatter } from 'src/utils/useNumber';
+import { useNumberFormatter } from 'src/utils/useNumberFormatter';
 &nbsp;
 import WithdrawalRenderer from './WithdrawalRenderer';
 &nbsp;
@@ -347,9 +347,7 @@ export default function <span class="fstat-no" title="function not covered" >Out
   withdrawal,
 }: OutplantWithdrawalTableProps): JSX.Element {
   const { user } = <span class="cstat-no" title="statement not covered" >useUser();</span>
-  const numberFormatter = <span class="cstat-no" title="statement not covered" >useNumberFormatter();</span>
-  const numericFormatter = <span class="cstat-no" title="statement not covered" >useMemo(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >numberFormatter(user?.locale),</span> [numberFormatter, user?.locale]);</span>
-  const [rowData, setRowData] = <span class="cstat-no" title="statement not covered" >useState&lt;{ [p: string]: unknown }[]&gt;([]);</span>
+  const numberFormatter = <span class="cstat-no" title="statement not covered" >useNumberFormatter(user?.locale);</span>
 &nbsp;
   type BatchesRow = {
     name?: string;
@@ -360,7 +358,7 @@ export default function <span class="fstat-no" title="function not covered" >Out
     toSubzone: string;
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const rowData = <span class="cstat-no" title="statement not covered" >useMemo(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (batches) {</span>
       const batchToSpeciesMap = <span class="cstat-no" title="statement not covered" >batchToSpecies(batches);</span>
 &nbsp;
@@ -391,7 +389,7 @@ export default function <span class="fstat-no" title="function not covered" >Out
 <span class="cstat-no" title="statement not covered" >          rows.push({</span>
             species: species?.find(<span class="fstat-no" title="function not covered" >(x</span>) =&gt; <span class="cstat-no" title="statement not covered" >x?.id === sp)</span>?.scientificName ?? '',
             to_subzone: subzone &gt; -1 ? subzoneNames[subzone] ?? subzone?.toString() : '',
-            quantity: numericFormatter.format(speciesSubzoneMap[sp][subzone]),
+            quantity: numberFormatter.format(speciesSubzoneMap[sp][subzone]),
           });
         }
       }
@@ -418,9 +416,11 @@ export default function <span class="fstat-no" title="function not covered" >Out
         });
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      setRowData(batchesMap);</span>
+<span class="cstat-no" title="statement not covered" >      return batchesMap;</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      return [];</span>
     }
-  }, [delivery, species, subzoneNames, numericFormatter, batches, withdrawal?.batchWithdrawals]);
+  }, [delivery, species, subzoneNames, numberFormatter, batches, withdrawal?.batchWithdrawals]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;Table
@@ -439,7 +439,7 @@ export default function <span class="fstat-no" title="function not covered" >Out
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

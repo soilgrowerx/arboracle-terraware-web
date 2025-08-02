@@ -122,7 +122,17 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,6 +152,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -150,7 +175,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,13 +182,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -194,6 +214,7 @@ import { searchResultZones } from './utils';
 // search observation details (search planting zone name only)
 &nbsp;
 export type DetailsParams = {
+  orgId: number;
   plantingSiteId: number;
   observationId: number;
 };
@@ -210,14 +231,18 @@ export type DetailsSearchParams = SearchParams &amp;
 export const selectObservationDetails = <span class="cstat-no" title="statement not covered" >createSelector(</span>
   [
 <span class="fstat-no" title="function not covered" >    (s</span>tate, params, defaultTimeZone) =&gt;
-<span class="cstat-no" title="statement not covered" >      selectMergedPlantingSiteObservations(state, params.plantingSiteId, defaultTimeZone, ALL_STATES),</span>
+<span class="cstat-no" title="statement not covered" >      selectMergedPlantingSiteObservations(state, params.plantingSiteId, params.orgId, defaultTimeZone, ALL_STATES),</span>
 <span class="fstat-no" title="function not covered" >    (s</span>tate, params, defaultTimeZone) =&gt; <span class="cstat-no" title="statement not covered" >params,</span>
   ],
 <span class="fstat-no" title="function not covered" >  (o</span>bservationsResults, params) =&gt;
 <span class="cstat-no" title="statement not covered" >    observationsResults?.find(<span class="fstat-no" title="function not covered" >(o</span>bservation: ObservationResults) =&gt; <span class="cstat-no" title="statement not covered" >observation.observationId === params.observationId)</span></span>
 );
 &nbsp;
-export const searchObservationDetails = <span class="cstat-no" title="statement not covered" >createCachedSelector(</span>
+export const searchObservationDetails: (
+  state: RootState,
+  params: DetailsSearchParams,
+  defaultTimeZone: string
+) =&gt; ObservationResults | undefined = <span class="cstat-no" title="statement not covered" >createCachedSelector(</span>
   selectObservationDetails,
 <span class="fstat-no" title="function not covered" >  (s</span>tate: RootState, params: DetailsSearchParams, defaultTimeZone: string) =&gt; <span class="cstat-no" title="statement not covered" >params,</span>
 <span class="fstat-no" title="function not covered" >  (o</span>bservation, params) =&gt; <span class="cstat-no" title="statement not covered" >searchResultZones(params.search, params.zoneNames, observation)</span>
@@ -229,9 +254,14 @@ export const searchObservationDetails = <span class="cstat-no" title="statement 
 );
 &nbsp;
 // get zone names in observation result
-export const selectDetailsZoneNames = <span class="cstat-no" title="statement not covered" >createCachedSelector(</span>
-<span class="fstat-no" title="function not covered" >  (s</span>tate: RootState, plantingSiteId: number, observationId: number) =&gt;
-<span class="cstat-no" title="statement not covered" >    selectObservationDetails(state, { plantingSiteId, observationId, search: '', zoneNames: [] }, ''),</span>
+export const selectDetailsZoneNames: (
+  state: RootState,
+  plantingSiteId: number,
+  observationId: number,
+  organizationId: number
+) =&gt; string[] = <span class="cstat-no" title="statement not covered" >createCachedSelector(</span>
+<span class="fstat-no" title="function not covered" >  (s</span>tate: RootState, plantingSiteId: number, observationId: number, orgId: number) =&gt;
+<span class="cstat-no" title="statement not covered" >    selectObservationDetails(state, { plantingSiteId, observationId, orgId, search: '', zoneNames: [] }, ''),</span>
 <span class="fstat-no" title="function not covered" >  (d</span>etails) =&gt;
 <span class="cstat-no" title="statement not covered" >    Array.from(</span>
       new Set(
@@ -247,7 +277,7 @@ export const selectDetailsZoneNames = <span class="cstat-no" title="statement no
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

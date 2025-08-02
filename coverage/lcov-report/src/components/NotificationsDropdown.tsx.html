@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/120</span>
+                <span class='fraction'>0/123</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/33</span>
+                <span class='fraction'>0/36</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/117</span>
+                <span class='fraction'>0/119</span>
             </div>
         
             
@@ -551,7 +551,12 @@
 <a name='L486'></a><a href='#L486'>486</a>
 <a name='L487'></a><a href='#L487'>487</a>
 <a name='L488'></a><a href='#L488'>488</a>
-<a name='L489'></a><a href='#L489'>489</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L489'></a><a href='#L489'>489</a>
+<a name='L490'></a><a href='#L490'>490</a>
+<a name='L491'></a><a href='#L491'>491</a>
+<a name='L492'></a><a href='#L492'>492</a>
+<a name='L493'></a><a href='#L493'>493</a>
+<a name='L494'></a><a href='#L494'>494</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -584,6 +589,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -777,6 +784,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -817,7 +826,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -845,7 +853,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -947,6 +954,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1040,7 +1050,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useCallback, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router';
 &nbsp;
 import {
   Badge,
@@ -1048,6 +1058,7 @@ import {
   IconButton,
   List,
   ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
   Popover,
@@ -1058,6 +1069,7 @@ import { Button, Tooltip } from '@terraware/web-components';
 import { DateTime } from 'luxon';
 &nbsp;
 import { API_PULL_INTERVAL, APP_PATHS } from 'src/constants';
+import { useSyncNavigate } from 'src/hooks/useSyncNavigate';
 import { NotificationsService } from 'src/services';
 import { NotificationsResponse } from 'src/services/NotificationsService';
 import strings from 'src/strings';
@@ -1092,12 +1104,12 @@ const StyledIcon = <span class="cstat-no" title="statement not covered" >styled(
 &nbsp;
 type NotificationsDropdownProps = {
   organizationId?: number;
-  reloadOrganizationData: (selectedOrgId?: number) =&gt; void;
+  reloadOrganizationData: (selectedOrgId?: number) =&gt; Promise&lt;void&gt;;
 };
 &nbsp;
 export default function <span class="fstat-no" title="function not covered" >NotificationsDropdown(</span>props: NotificationsDropdownProps): JSX.Element {
   const theme = <span class="cstat-no" title="statement not covered" >useTheme();</span>
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
+  const navigate = <span class="cstat-no" title="statement not covered" >useSyncNavigate();</span>
   const { organizationId, reloadOrganizationData } = <span class="cstat-no" title="statement not covered" >props;</span>
   // notificationsInterval value is only being used when it is set.
   const [anchorEl, setAnchorEl] = <span class="cstat-no" title="statement not covered" >useState&lt;Element | null&gt;(null);</span>
@@ -1130,12 +1142,12 @@ export default function <span class="fstat-no" title="function not covered" >Not
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     // Update notifications now.
-<span class="cstat-no" title="statement not covered" >    populateNotifications();</span>
+<span class="cstat-no" title="statement not covered" >    void populateNotifications();</span>
 &nbsp;
     // Create interval to fetch future notifications.
     let interval: ReturnType&lt;typeof setInterval&gt;;
 <span class="cstat-no" title="statement not covered" >    if (!process.env.REACT_APP_DISABLE_RECURRENT_REQUESTS) {</span>
-<span class="cstat-no" title="statement not covered" >      interval = setInterval(populateNotifications, API_PULL_INTERVAL);</span>
+<span class="cstat-no" title="statement not covered" >      interval = setInterval(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >void populateNotifications(),</span> API_PULL_INTERVAL);</span>
     }
 &nbsp;
     // Clean up existing interval.
@@ -1265,7 +1277,9 @@ export default function <span class="fstat-no" title="function not covered" >Not
 <span class="cstat-no" title="statement not covered" >              &lt;NotificationItem</span>
                 key={notification.id}
                 notification={notification}
-                markAsRead={markAsRead}
+                markAsRead={<span class="fstat-no" title="function not covered" >(r</span>ead, id, close, individualMarkAsRead) =&gt;
+<span class="cstat-no" title="statement not covered" >                  void markAsRead(read, id, close, individualMarkAsRead)</span>
+                }
                 reloadOrganizationData={reloadOrganizationData}
               /&gt;
             ))}
@@ -1291,7 +1305,7 @@ export default function <span class="fstat-no" title="function not covered" >Not
 type NotificationItemProps = {
   notification: Notification;
   markAsRead: (read: boolean, id: number, close?: boolean, individualMarkAsRead?: () =&gt; void) =&gt; void;
-  reloadOrganizationData: (selectedOrgId?: number) =&gt; void;
+  reloadOrganizationData: (selectedOrgId?: number) =&gt; Promise&lt;void&gt;;
 };
 &nbsp;
 function <span class="fstat-no" title="function not covered" >NotificationItem(</span>props: NotificationItemProps): JSX.Element {
@@ -1305,7 +1319,6 @@ function <span class="fstat-no" title="function not covered" >NotificationItem(<
   const onNotificationClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (read: boolean, close?: boolean) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (close &amp;&amp; localUrl.startsWith('/home')) {</span>
       const orgId: string | null = <span class="cstat-no" title="statement not covered" >new URL(localUrl, window.location.origin).searchParams.get('organizationId');</span>
-      // eslint-disable-next-line @typescript-eslint/await-thenable
 <span class="cstat-no" title="statement not covered" >      await reloadOrganizationData(orgId ? parseInt(orgId, 10) : undefined);</span>
     }
 <span class="cstat-no" title="statement not covered" >    markAsRead(read, id, close, notification.markAsRead);</span>
@@ -1333,11 +1346,10 @@ function <span class="fstat-no" title="function not covered" >NotificationItem(<
   };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;ListItem
+    &lt;ListItemButton
       id={`notification${id}`}
-      button
       className={criticality}
-      onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >onNotificationClick(true, true)}</span>
+      onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >void onNotificationClick(true, true)}</span>
       component={Link}
       to={localUrl}
       onMouseEnter={onMouseEnter}
@@ -1436,10 +1448,13 @@ function <span class="fstat-no" title="function not covered" >NotificationItem(<
           /&gt;
         )}
         {(inFocus || (isRead &amp;&amp; !isDesktop)) &amp;&amp; (
-          &lt;NotificationItemMenu markAsRead={onNotificationClick} notification={notification} /&gt;
+          &lt;NotificationItemMenu
+            markAsRead={<span class="fstat-no" title="function not covered" >(r</span>ead, close) =&gt; <span class="cstat-no" title="statement not covered" >void onNotificationClick(read, close)}</span>
+            notification={notification}
+          /&gt;
         )}
       &lt;/ListItem&gt;
-    &lt;/ListItem&gt;
+    &lt;/ListItemButton&gt;
   );
 }
 &nbsp;
@@ -1516,12 +1531,12 @@ function <span class="fstat-no" title="function not covered" >NotificationItemMe
         }}
       &gt;
         &lt;List&gt;
-          &lt;ListItem button onClick={handleMarkRead}&gt;
+          &lt;ListItemButton onClick={handleMarkRead}&gt;
             {strings[isRead ? 'MARK_AS_UNREAD' : 'MARK_AS_READ']}
-          &lt;/ListItem&gt;
-          &lt;ListItem button onClick={handleGoToLink} component={Link} to={localUrl}&gt;
+          &lt;/ListItemButton&gt;
+          &lt;ListItemButton onClick={handleGoToLink} component={Link} to={localUrl}&gt;
             {strings.TAKE_ME_THERE}
-          &lt;/ListItem&gt;
+          &lt;/ListItemButton&gt;
         &lt;/List&gt;
       &lt;/Popover&gt;
     &lt;/div&gt;
@@ -1534,7 +1549,7 @@ function <span class="fstat-no" title="function not covered" >NotificationItemMe
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/33</span>
+                <span class='fraction'>0/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>0/19</span>
             </div>
         
             
@@ -100,15 +100,7 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,26 +124,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createCachedSelector } from 're-reselect';
 &nbsp;
@@ -176,28 +160,20 @@ export const selectPlantingSitesError = <span class="cstat-no" title="statement 
 export const selectPlantingSite = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate: RootState, plantingSiteId: number) =&gt;</span>
 <span class="cstat-no" title="statement not covered" >  selectPlantingSites(state)?.find(<span class="fstat-no" title="function not covered" >(s</span>ite: PlantingSite) =&gt; <span class="cstat-no" title="statement not covered" >site.id === plantingSiteId)</span>;</span>
 &nbsp;
-export const selectSiteReportedPlants = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate: RootState, plantingSiteId: number) =&gt;</span>
-<span class="cstat-no" title="statement not covered" >  state.siteReportedPlantsResults[plantingSiteId]?.site;</span>
-&nbsp;
-export const selectSiteReportedPlantsError = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate: RootState, plantingSiteId: number) =&gt;</span>
-<span class="cstat-no" title="statement not covered" >  state.siteReportedPlantsResults[plantingSiteId]?.error;</span>
-&nbsp;
-export const selectZoneProgress = <span class="cstat-no" title="statement not covered" >createCachedSelector(</span>
-<span class="fstat-no" title="function not covered" >  (s</span>tate: RootState, plantingSiteId: number) =&gt; <span class="cstat-no" title="statement not covered" >selectPlantingSite(state, plantingSiteId),</span>
-<span class="fstat-no" title="function not covered" >  (s</span>tate: RootState, plantingSiteId: number) =&gt; <span class="cstat-no" title="statement not covered" >selectSiteReportedPlants(state, plantingSiteId),</span>
-<span class="fstat-no" title="function not covered" >  (p</span>lantingSite, reportedPlants) =&gt; {
-    const zoneProgress: Record&lt;number, { name: string; progress: number; targetDensity: number }&gt; = <span class="cstat-no" title="statement not covered" >{};</span>
-<span class="cstat-no" title="statement not covered" >    plantingSite?.plantingZones?.forEach(<span class="fstat-no" title="function not covered" >(z</span>one) =&gt; {</span>
-      const percentProgress = <span class="cstat-no" title="statement not covered" >reportedPlants?.plantingZones?.find(<span class="fstat-no" title="function not covered" >(z</span>) =&gt; <span class="cstat-no" title="statement not covered" >z.id === zone.id)</span>?.progressPercent ?? 0;</span>
-<span class="cstat-no" title="statement not covered" >      zoneProgress[zone.id] = { name: zone.name, progress: percentProgress, targetDensity: zone.targetPlantingDensity };</span>
-    });
-<span class="cstat-no" title="statement not covered" >    return zoneProgress;</span>
-  }
-)(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState, plantingSiteId: number) =&gt; <span class="cstat-no" title="statement not covered" >`${plantingSiteId}`)</span>;
-&nbsp;
 export const selectMonitoringPlots = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate: RootState, requestId: string) =&gt; <span class="cstat-no" title="statement not covered" >state.monitoringPlots[requestId];</span></span>
 &nbsp;
+export const selectPlantingSiteList = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equestId: string) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.plantingSiteList[requestId];</span></span></span>
+&nbsp;
 export const selectPlantingSiteHistory = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate: RootState, requestId: string) =&gt; <span class="cstat-no" title="statement not covered" >state.plantingSiteHistory[requestId];</span></span>
+&nbsp;
+export const selectPlantingSiteHistories = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equestId: string) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt;</span></span>
+<span class="cstat-no" title="statement not covered" >  state.plantingSiteHistories[requestId];</span>
+&nbsp;
+export const selectPlantingSiteReportedPlants = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equestId: string) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt;</span></span>
+<span class="cstat-no" title="statement not covered" >  state.plantingSiteReportedPlants[requestId];</span>
+&nbsp;
+export const selectOrganizationReportedPlants = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equestId: string) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt;</span></span>
+<span class="cstat-no" title="statement not covered" >  state.organizationReportedPlants[requestId];</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -205,7 +181,7 @@ export const selectPlantingSiteHistory = <span class="cstat-no" title="statement
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

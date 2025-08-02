@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/74</span>
+                <span class='fraction'>0/69</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/37</span>
+                <span class='fraction'>0/33</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/21</span>
+                <span class='fraction'>0/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/73</span>
+                <span class='fraction'>0/68</span>
             </div>
         
             
@@ -318,19 +318,7 @@
 <a name='L253'></a><a href='#L253'>253</a>
 <a name='L254'></a><a href='#L254'>254</a>
 <a name='L255'></a><a href='#L255'>255</a>
-<a name='L256'></a><a href='#L256'>256</a>
-<a name='L257'></a><a href='#L257'>257</a>
-<a name='L258'></a><a href='#L258'>258</a>
-<a name='L259'></a><a href='#L259'>259</a>
-<a name='L260'></a><a href='#L260'>260</a>
-<a name='L261'></a><a href='#L261'>261</a>
-<a name='L262'></a><a href='#L262'>262</a>
-<a name='L263'></a><a href='#L263'>263</a>
-<a name='L264'></a><a href='#L264'>264</a>
-<a name='L265'></a><a href='#L265'>265</a>
-<a name='L266'></a><a href='#L266'>266</a>
-<a name='L267'></a><a href='#L267'>267</a>
-<a name='L268'></a><a href='#L268'>268</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L256'></a><a href='#L256'>256</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -360,7 +348,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -417,15 +404,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -494,12 +475,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -598,7 +574,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 &nbsp;
 import { Grid, Typography, useTheme } from '@mui/material';
 import { useDeviceInfo } from '@terraware/web-components/utils';
@@ -614,7 +590,6 @@ import { useLocalization, useUser } from 'src/providers';
 import { requestSubmitSupportRequest } from 'src/redux/features/support/supportAsyncThunks';
 import { selectSupportRequestSubmitRequest } from 'src/redux/features/support/supportSelectors';
 import { useAppDispatch, useAppSelector } from 'src/redux/store';
-import strings from 'src/strings';
 import {
   AttachmentRequest,
   SupportRequest,
@@ -634,7 +609,7 @@ const MAX_FILE_SIZE = <span class="cstat-no" title="statement not covered" >200;
 const ContactUsForm = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
   const dispatch = <span class="cstat-no" title="statement not covered" >useAppDispatch();</span>
   const { isDesktop } = <span class="cstat-no" title="statement not covered" >useDeviceInfo();</span>
-  const { activeLocale } = <span class="cstat-no" title="statement not covered" >useLocalization();</span>
+  const { strings } = <span class="cstat-no" title="statement not covered" >useLocalization();</span>
   const { user } = <span class="cstat-no" title="statement not covered" >useUser();</span>
   const theme = <span class="cstat-no" title="statement not covered" >useTheme();</span>
   const pathParams = <span class="cstat-no" title="statement not covered" >useParams&lt;{ requestType: string }&gt;();</span>
@@ -650,11 +625,11 @@ const ContactUsForm = <span class="cstat-no" title="statement not covered" ><spa
   const crumbs: Crumb[] = <span class="cstat-no" title="statement not covered" >useMemo(</span>
 <span class="fstat-no" title="function not covered" >    ()</span> =&gt; <span class="cstat-no" title="statement not covered" >[</span>
       {
-        name: activeLocale ? strings.HELP_SUPPORT : '',
+        name: strings.HELP_SUPPORT,
         to: APP_PATHS.HELP_SUPPORT,
       },
     ],
-    [activeLocale]
+    [strings]
   );
 &nbsp;
   const { types } = <span class="cstat-no" title="statement not covered" >useSupportData();</span>
@@ -681,7 +656,7 @@ const ContactUsForm = <span class="cstat-no" title="statement not covered" ><spa
     ) {
 <span class="cstat-no" title="statement not covered" >      goToHelpSupport();</span>
     }
-  }, [types, supportRequestType]);
+  }, [types, supportRequestType, goToHelpSupport]);
 &nbsp;
   const [supportRequest, , onChangeSupportRequest] = <span class="cstat-no" title="statement not covered" >useForm&lt;SupportRequest&gt;({</span>
     attachmentIds: [],
@@ -689,12 +664,6 @@ const ContactUsForm = <span class="cstat-no" title="statement not covered" ><spa
     summary: '',
     requestType: supportRequestType ?? 'Contact Us',
   });
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (supportRequestType) {</span>
-<span class="cstat-no" title="statement not covered" >      onChangeSupportRequest('requestType', supportRequestType);</span>
-    }
-  }, [supportRequestType]);
 &nbsp;
   const [allAttachments, setAllAttachments] = <span class="cstat-no" title="statement not covered" >useState&lt;AttachmentRequest[]&gt;([]);</span>
 &nbsp;
@@ -715,7 +684,7 @@ const ContactUsForm = <span class="cstat-no" title="statement not covered" ><spa
           .map(<span class="fstat-no" title="function not covered" >({</span> temporaryAttachmentId }) =&gt; <span class="cstat-no" title="statement not covered" >temporaryAttachmentId)</span>
       );
     },
-    [supportRequest]
+    [onChangeSupportRequest]
   );
 &nbsp;
   const submit = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
@@ -734,11 +703,11 @@ const ContactUsForm = <span class="cstat-no" title="statement not covered" ><spa
       const dispatched = <span class="cstat-no" title="statement not covered" >dispatch(requestSubmitSupportRequest(supportRequest));</span>
 <span class="cstat-no" title="statement not covered" >      setSubmitSupportRequestId(dispatched.requestId);</span>
     }
-  }, [supportRequest, dispatch]);
+  }, [supportRequest, strings, dispatch]);
 &nbsp;
   const handleOnSave = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    submit();</span>
-  }, [supportRequest]);
+  }, [submit]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (!submitSupportRequest) {</span>
@@ -752,27 +721,22 @@ const ContactUsForm = <span class="cstat-no" title="statement not covered" ><spa
 <span class="cstat-no" title="statement not covered" >      snackbar.toastSuccess(strings.formatString(strings.THANK_YOU_FOR_CONTACTING_SUPPORT, `${issueKey}`));</span>
 <span class="cstat-no" title="statement not covered" >      goToHelpSupport();</span>
     }
-  }, [activeLocale, submitSupportRequest, snackbar]);
+  }, [submitSupportRequest, snackbar, goToHelpSupport, strings]);
 &nbsp;
   const supportRequestTitle = <span class="cstat-no" title="statement not covered" >useMemo(</span>
-<span class="fstat-no" title="function not covered" >    ()</span> =&gt; (<span class="cstat-no" title="statement not covered" >supportRequestType ? getSupportRequestName(supportRequestType) : '')</span>,
-    [activeLocale, supportRequestType]
+<span class="fstat-no" title="function not covered" >    ()</span> =&gt; (<span class="cstat-no" title="statement not covered" >supportRequestType ? getSupportRequestName(supportRequestType, strings) : '')</span>,
+    [supportRequestType, strings]
   );
 &nbsp;
   const supportRequestInstructions = <span class="cstat-no" title="statement not covered" >useMemo(</span>
-<span class="fstat-no" title="function not covered" >    ()</span> =&gt; (<span class="cstat-no" title="statement not covered" >supportRequestType ? getSupportRequestInstructions(supportRequestType) : '')</span>,
-    [activeLocale, supportRequestType]
+<span class="fstat-no" title="function not covered" >    ()</span> =&gt; (<span class="cstat-no" title="statement not covered" >supportRequestType ? getSupportRequestInstructions(supportRequestType, strings) : '')</span>,
+    [supportRequestType, strings]
   );
 &nbsp;
   // Confirming that no uploads are pending.
   const uploadCompleted = <span class="cstat-no" title="statement not covered" >useMemo(</span>
 <span class="fstat-no" title="function not covered" >    ()</span> =&gt; <span class="cstat-no" title="statement not covered" >allAttachments.every(<span class="fstat-no" title="function not covered" >(a</span>ttachment) =&gt; <span class="cstat-no" title="statement not covered" >attachment.status !== 'pending')</span>,</span>
     [allAttachments]
-  );
-&nbsp;
-  const attachmentDescription = <span class="cstat-no" title="statement not covered" >useMemo(</span>
-<span class="fstat-no" title="function not covered" >    ()</span> =&gt; <span class="cstat-no" title="statement not covered" >strings.formatString(strings.ATTACHMENT_DESCRIPTION, MAX_FILES_LIMIT, MAX_FILE_SIZE),</span>
-    [activeLocale]
   );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
@@ -853,7 +817,7 @@ const ContactUsForm = <span class="cstat-no" title="statement not covered" ><spa
                 marginBottom={theme.spacing(1)}
                 display={'inline'}
               &gt;
-                {attachmentDescription}
+                {strings.formatString(strings.ATTACHMENT_DESCRIPTION, MAX_FILES_LIMIT, MAX_FILE_SIZE)}
               &lt;/Typography&gt;
               &lt;ContactUsAttachments maxFiles={MAX_FILES_LIMIT} onChange={onChangeAttachments} /&gt;
             &lt;/Grid&gt;
@@ -871,7 +835,7 @@ export default ContactUsForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

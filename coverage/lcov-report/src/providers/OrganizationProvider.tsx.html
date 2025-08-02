@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/68</span>
+                <span class='fraction'>0/62</span>
             </div>
         
             
@@ -254,7 +254,18 @@
 <a name='L189'></a><a href='#L189'>189</a>
 <a name='L190'></a><a href='#L190'>190</a>
 <a name='L191'></a><a href='#L191'>191</a>
-<a name='L192'></a><a href='#L192'>192</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -341,7 +352,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -350,6 +364,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -446,10 +468,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 &nbsp;
 import { APP_PATHS } from 'src/constants';
 import useAcceleratorConsole from 'src/hooks/useAcceleratorConsole';
+import { useSyncNavigate } from 'src/hooks/useSyncNavigate';
 import { store } from 'src/redux/store';
 import { OrganizationService, PreferencesService } from 'src/services';
 import strings from 'src/strings';
@@ -459,7 +481,7 @@ import useQuery from 'src/utils/useQuery';
 import useStateLocation, { getLocation } from 'src/utils/useStateLocation';
 &nbsp;
 import { PreferencesType, ProvidedOrganizationData } from './DataTypes';
-import { OrganizationContext, defaultSelectedOrg } from './contexts';
+import { OrganizationContext } from './contexts';
 import { useUser } from './hooks';
 &nbsp;
 export type OrganizationProviderProps = {
@@ -477,10 +499,10 @@ export default function <span class="fstat-no" title="function not covered" >Org
   const [bootstrapped, setBootstrapped] = <span class="cstat-no" title="statement not covered" >useState&lt;boolean&gt;(false);</span>
   const [selectedOrganization, setSelectedOrganization] = <span class="cstat-no" title="statement not covered" >useState&lt;Organization&gt;();</span>
   const [orgPreferences, setOrgPreferences] = <span class="cstat-no" title="statement not covered" >useState&lt;PreferencesType&gt;({});</span>
-  const [orgPreferenceForId, setOrgPreferenceForId] = <span class="cstat-no" title="statement not covered" >useState&lt;number&gt;(defaultSelectedOrg.id);</span>
+  const [orgPreferenceForId, setOrgPreferenceForId] = <span class="cstat-no" title="statement not covered" >useState&lt;number&gt;(-1);</span>
   const [orgAPIRequestStatus, setOrgAPIRequestStatus] = <span class="cstat-no" title="statement not covered" >useState&lt;APIRequestStatus&gt;(APIRequestStatus.AWAITING);</span>
   const [organizations, setOrganizations] = <span class="cstat-no" title="statement not covered" >useState&lt;Organization[]&gt;();</span>
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
+  const navigate = <span class="cstat-no" title="statement not covered" >useSyncNavigate();</span>
   const query = <span class="cstat-no" title="statement not covered" >useQuery();</span>
   const location = <span class="cstat-no" title="statement not covered" >useStateLocation();</span>
   const { user, userPreferences, updateUserPreferences, bootstrapped: userBootstrapped } = <span class="cstat-no" title="statement not covered" >useUser();</span>
@@ -517,7 +539,7 @@ export default function <span class="fstat-no" title="function not covered" >Org
 &nbsp;
   const reloadOrgPreferences = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     const getOrgPreferences = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (selectedOrganization &amp;&amp; selectedOrganization.id !== -1) {</span>
+<span class="cstat-no" title="statement not covered" >      if (selectedOrganization) {</span>
         const response = <span class="cstat-no" title="statement not covered" >await PreferencesService.getUserOrgPreferences(selectedOrganization.id);</span>
 <span class="cstat-no" title="statement not covered" >        if (response.requestSucceeded &amp;&amp; response.preferences) {</span>
 <span class="cstat-no" title="statement not covered" >          setOrgPreferences(response.preferences);</span>
@@ -528,29 +550,40 @@ export default function <span class="fstat-no" title="function not covered" >Org
       }
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    getOrgPreferences();</span>
+<span class="cstat-no" title="statement not covered" >    void getOrgPreferences();</span>
   }, [selectedOrganization]);
 &nbsp;
-  const redirectAndNotify = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(o</span>rganization: Organization) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    navigate({ pathname: APP_PATHS.HOME, search: `organizationId=${organization.id}&amp;newOrg=true` });</span>
-  };
+  const redirectAndNotify = <span class="cstat-no" title="statement not covered" >useCallback(</span>
+<span class="fstat-no" title="function not covered" >    (o</span>rganization: Organization) =&gt; {
+<span class="cstat-no" title="statement not covered" >      navigate({ pathname: APP_PATHS.HOME, search: `organizationId=${organization.id}&amp;newOrg=true` });</span>
+    },
+    [navigate]
+  );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    reloadOrganizations();</span>
+<span class="cstat-no" title="statement not covered" >    void reloadOrganizations();</span>
   }, [reloadOrganizations]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    setOrganizationData(<span class="fstat-no" title="function not covered" >(p</span>rev) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
       ...prev,
       redirectAndNotify,
-      selectedOrganization: selectedOrganization || defaultSelectedOrg,
+      selectedOrganization,
       organizations: organizations ?? [],
       orgPreferences,
       bootstrapped,
       orgPreferenceForId,
       reloadOrgPreferences,
     }));
-  }, [selectedOrganization, organizations, orgPreferences, bootstrapped, orgPreferenceForId, reloadOrgPreferences]);
+  }, [
+    selectedOrganization,
+    organizations,
+    orgPreferences,
+    bootstrapped,
+    orgPreferenceForId,
+    reloadOrgPreferences,
+    redirectAndNotify,
+  ]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    reloadOrgPreferences();</span>
@@ -601,7 +634,7 @@ export default function <span class="fstat-no" title="function not covered" >Org
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (selectedOrganization?.id &amp;&amp; userPreferences.lastVisitedOrg !== selectedOrganization.id) {</span>
-<span class="cstat-no" title="statement not covered" >      updateUserPreferences({ lastVisitedOrg: selectedOrganization.id });</span>
+<span class="cstat-no" title="statement not covered" >      void updateUserPreferences({ lastVisitedOrg: selectedOrganization.id });</span>
     }
   }, [selectedOrganization?.id, updateUserPreferences, userPreferences.lastVisitedOrg]);
 &nbsp;
@@ -620,10 +653,10 @@ export default function <span class="fstat-no" title="function not covered" >Org
 <span class="cstat-no" title="statement not covered" >        navigate(APP_PATHS.ERROR_FAILED_TO_FETCH_ORG_DATA);</span>
       }
     }
-  }, [orgAPIRequestStatus]);
+  }, [orgAPIRequestStatus, isDev, isStaging, navigate]);
 &nbsp;
   const [organizationData, setOrganizationData] = <span class="cstat-no" title="statement not covered" >useState&lt;ProvidedOrganizationData&gt;({</span>
-    selectedOrganization: selectedOrganization || defaultSelectedOrg,
+    selectedOrganization,
     setSelectedOrganization,
     organizations: organizations ?? [],
     orgPreferences,
@@ -643,7 +676,7 @@ export default function <span class="fstat-no" title="function not covered" >Org
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/140</span>
+                <span class='fraction'>0/141</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/133</span>
+                <span class='fraction'>0/134</span>
             </div>
         
             
@@ -534,7 +534,10 @@
 <a name='L469'></a><a href='#L469'>469</a>
 <a name='L470'></a><a href='#L470'>470</a>
 <a name='L471'></a><a href='#L471'>471</a>
-<a name='L472'></a><a href='#L472'>472</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L472'></a><a href='#L472'>472</a>
+<a name='L473'></a><a href='#L473'>473</a>
+<a name='L474'></a><a href='#L474'>474</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -744,6 +747,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1006,7 +1010,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 &nbsp;
 import { Box, Grid, Typography, useTheme } from '@mui/material';
 import { Button, DropdownItem, TableColumnType } from '@terraware/web-components';
@@ -1017,6 +1020,8 @@ import OptionsMenu from 'src/components/common/OptionsMenu';
 import Table from 'src/components/common/table';
 import { SortOrder } from 'src/components/common/table/sort';
 import { APP_PATHS } from 'src/constants';
+import { DEFAULT_SEARCH_DEBOUNCE_MS } from 'src/constants';
+import { useSyncNavigate } from 'src/hooks/useSyncNavigate';
 import { useOrganization } from 'src/providers';
 import { isBatchEmpty } from 'src/scenes/InventoryRouter/FilterUtils';
 import { InventoryFiltersUnion } from 'src/scenes/InventoryRouter/InventoryFilter';
@@ -1081,7 +1086,7 @@ export default function <span class="fstat-no" title="function not covered" >Inv
   const { isMobile, isDesktop } = <span class="cstat-no" title="statement not covered" >useDeviceInfo();</span>
   const theme = <span class="cstat-no" title="statement not covered" >useTheme();</span>
   const snackbar = <span class="cstat-no" title="statement not covered" >useSnackbar();</span>
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
+  const navigate = <span class="cstat-no" title="statement not covered" >useSyncNavigate();</span>
 &nbsp;
   const [openExportModal, setOpenExportModal] = <span class="cstat-no" title="statement not covered" >useState&lt;boolean&gt;(false);</span>
   const [temporalSearchValue, setTemporalSearchValue] = <span class="cstat-no" title="statement not covered" >useState&lt;string&gt;('');</span>
@@ -1097,7 +1102,7 @@ export default function <span class="fstat-no" title="function not covered" >Inv
   const [openNewBatchModal, setOpenNewBatchModal] = <span class="cstat-no" title="statement not covered" >useState&lt;boolean&gt;(false);</span>
   const [searchSortOrder, setSearchSortOrder] = <span class="cstat-no" title="statement not covered" >useState&lt;SearchSortOrder&gt;();</span>
 &nbsp;
-  const debouncedSearchTerm = <span class="cstat-no" title="statement not covered" >useDebounce(temporalSearchValue, 250);</span>
+  const debouncedSearchTerm = <span class="cstat-no" title="statement not covered" >useDebounce(temporalSearchValue, DEFAULT_SEARCH_DEBOUNCE_MS);</span>
 &nbsp;
   const filterEmptyBatches = <span class="cstat-no" title="statement not covered" >useCallback(</span>
 <span class="fstat-no" title="function not covered" >    (u</span>nfiltered: SearchResponseElement[]) =&gt; {
@@ -1156,7 +1161,7 @@ export default function <span class="fstat-no" title="function not covered" >Inv
     const requestId = <span class="cstat-no" title="statement not covered" >setRequestId('inventory-seedlings');</span>
 &nbsp;
     const populateResults = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (!originId || selectedOrganization.id === -1) {</span>
+<span class="cstat-no" title="statement not covered" >      if (!originId || !selectedOrganization) {</span>
 <span class="cstat-no" title="statement not covered" >        return;</span>
       }
 &nbsp;
@@ -1185,7 +1190,7 @@ export default function <span class="fstat-no" title="function not covered" >Inv
     const requestId = <span class="cstat-no" title="statement not covered" >setRequestId('inventory-seedlings-species-unfiltered');</span>
 &nbsp;
     const populateSpeciesUnfilteredResults = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (!originId || selectedOrganization.id === -1) {</span>
+<span class="cstat-no" title="statement not covered" >      if (!originId || !selectedOrganization) {</span>
 <span class="cstat-no" title="statement not covered" >        return;</span>
       }
 &nbsp;
@@ -1218,18 +1223,19 @@ export default function <span class="fstat-no" title="function not covered" >Inv
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     const batch = <span class="cstat-no" title="statement not covered" >batches.find(<span class="fstat-no" title="function not covered" >(b</span>) =&gt; <span class="cstat-no" title="statement not covered" >b.batchNumber === openBatchNumber)</span>;</span>
 <span class="cstat-no" title="statement not covered" >    if (batch) {</span>
+      const batchId = <span class="cstat-no" title="statement not covered" >batch.id as number | string;</span>
 <span class="cstat-no" title="statement not covered" >      if (origin === 'Nursery') {</span>
 <span class="cstat-no" title="statement not covered" >        navigate({</span>
           pathname: APP_PATHS.INVENTORY_BATCH_FOR_NURSERY.replace(':nurseryId', `${originId}`).replace(
             ':batchId',
-            `${batch.id}`
+            `${batchId}`
           ),
         });
       } else {
 <span class="cstat-no" title="statement not covered" >        navigate({</span>
           pathname: APP_PATHS.INVENTORY_BATCH_FOR_SPECIES.replace(':speciesId', `${originId}`).replace(
             ':batchId',
-            `${batch.id}`
+            `${batchId}`
           ),
         });
       }
@@ -1242,7 +1248,7 @@ export default function <span class="fstat-no" title="function not covered" >Inv
 &nbsp;
   const deleteSelectedBatches = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     const promises = <span class="cstat-no" title="statement not covered" >selectedRows.map(<span class="fstat-no" title="function not covered" >(r</span>) =&gt; <span class="cstat-no" title="statement not covered" >NurseryBatchService.deleteBatch(r.id as number))</span>;</span>
-<span class="cstat-no" title="statement not covered" >    Promise.allSettled(promises).then(<span class="fstat-no" title="function not covered" >(r</span>esults) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    void Promise.allSettled(promises).then(<span class="fstat-no" title="function not covered" >(r</span>esults) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      if (results.some(<span class="fstat-no" title="function not covered" >(r</span>esult) =&gt; <span class="cstat-no" title="statement not covered" >result.status === 'rejected' || result?.value?.requestSucceeded === false)</span>) {</span>
 <span class="cstat-no" title="statement not covered" >        snackbar.toastError();</span>
       }
@@ -1361,12 +1367,12 @@ export default function <span class="fstat-no" title="function not covered" >Inv
   };
 &nbsp;
   const batchesExport = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (!originId || !getBatchesExport || selectedOrganization.id === -1) {</span>
+<span class="cstat-no" title="statement not covered" >    if (!originId || !getBatchesExport || !selectedOrganization) {</span>
 <span class="cstat-no" title="statement not covered" >      return Promise.resolve([] as SearchResponseElement[]);</span>
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return getBatchesExport(selectedOrganization.id, originId, getSearchFields(), searchSortOrder);</span>
-  }, [getBatchesExport, selectedOrganization.id, originId, getSearchFields, searchSortOrder]);
+  }, [getBatchesExport, selectedOrganization, originId, getSearchFields, searchSortOrder]);
 &nbsp;
   const getResultsSpeciesNames = <span class="cstat-no" title="statement not covered" >useCallback(</span>
 <span class="fstat-no" title="function not covered" >    ()</span>: string[] =&gt; <span class="cstat-no" title="statement not covered" >speciesUnfilteredBatches.map(<span class="fstat-no" title="function not covered" >(s</span>) =&gt; <span class="cstat-no" title="statement not covered" >s.species_scientificName as string)</span>,</span>
@@ -1483,7 +1489,7 @@ export default function <span class="fstat-no" title="function not covered" >Inv
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

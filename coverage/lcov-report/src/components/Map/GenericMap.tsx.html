@@ -120,7 +120,23 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,20 +163,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,7 +213,7 @@
 &nbsp;
 import { Box, CircularProgress } from '@mui/material';
 &nbsp;
-import { MapControl, MapEntityOptions, MapOptions, MapPopupRenderer } from 'src/types/Map';
+import { MapControl, MapEntityOptions, MapOptions, MapPopupRenderer, MapViewStyle } from 'src/types/Map';
 import useMapboxToken from 'src/utils/useMapboxToken';
 &nbsp;
 import Map, { MapImage } from './Map';
@@ -198,13 +230,26 @@ type GenericMapProps = {
   contextRenderer?: MapPopupRenderer;
   options?: MapOptions;
   style?: object;
+  mapViewStyle?: MapViewStyle;
   bannerMessage?: string;
+  bottomRightLabel?: React.ReactNode;
   entityOptions?: MapEntityOptions;
   mapImages?: MapImage[];
+  showSiteMarker?: boolean;
 } &amp; MapControl;
 &nbsp;
 export default function <span class="fstat-no" title="function not covered" >GenericMap(</span>props: GenericMapProps): JSX.Element | null {
-  const { contextRenderer, options, style, bannerMessage, entityOptions, mapImages } = <span class="cstat-no" title="statement not covered" >props;</span>
+  const {
+    contextRenderer,
+    options,
+    style,
+    bannerMessage,
+    bottomRightLabel,
+    entityOptions,
+    mapImages,
+    mapViewStyle,
+    showSiteMarker,
+  } = <span class="cstat-no" title="statement not covered" >props;</span>
   const { ...mapControlProps }: MapControl = <span class="cstat-no" title="statement not covered" >props;</span>
 &nbsp;
   const { token, mapId, refreshToken } = <span class="cstat-no" title="statement not covered" >useMapboxToken();</span>
@@ -229,6 +274,9 @@ export default function <span class="fstat-no" title="function not covered" >Gen
         bannerMessage={bannerMessage}
         entityOptions={entityOptions}
         mapImages={mapImages}
+        mapViewStyle={mapViewStyle}
+        bottomRightLabel={bottomRightLabel}
+        showSiteMarker={showSiteMarker}
         {...mapControlProps}
       /&gt;
     &lt;/Box&gt;
@@ -241,7 +289,7 @@ export default function <span class="fstat-no" title="function not covered" >Gen
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/67</span>
+                <span class='fraction'>0/68</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/69</span>
+                <span class='fraction'>0/75</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/23</span>
+                <span class='fraction'>0/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/66</span>
+                <span class='fraction'>0/67</span>
             </div>
         
             
@@ -368,7 +368,11 @@
 <a name='L303'></a><a href='#L303'>303</a>
 <a name='L304'></a><a href='#L304'>304</a>
 <a name='L305'></a><a href='#L305'>305</a>
-<a name='L306'></a><a href='#L306'>306</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L306'></a><a href='#L306'>306</a>
+<a name='L307'></a><a href='#L307'>307</a>
+<a name='L308'></a><a href='#L308'>308</a>
+<a name='L309'></a><a href='#L309'>309</a>
+<a name='L310'></a><a href='#L310'>310</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -397,6 +401,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -436,17 +441,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -457,11 +468,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -545,7 +553,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -673,8 +681,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 &nbsp;
 import { Box, Grid, Typography, useTheme } from '@mui/material';
 import { getDateDisplayValue } from '@terraware/web-components/utils';
@@ -683,6 +691,7 @@ import PageSnackbar from 'src/components/PageSnackbar';
 import DatePicker from 'src/components/common/DatePicker';
 import TfMain from 'src/components/common/TfMain';
 import { APP_PATHS } from 'src/constants';
+import { useSyncNavigate } from 'src/hooks/useSyncNavigate';
 import { useOrganization } from 'src/providers/hooks';
 import NurserySubLocations from 'src/scenes/NurseriesRouter/NurserySubLocations';
 import { FacilityService, SubLocationService } from 'src/services';
@@ -718,12 +727,12 @@ export default function <span class="fstat-no" title="function not covered" >Nur
     name: '',
     id: -1,
     type: 'Nursery',
-    organizationId: selectedOrganization.id,
+    organizationId: selectedOrganization?.id || -1,
     connectionState: 'Not Connected',
   });
   const { nurseryId } = <span class="cstat-no" title="statement not covered" >useParams&lt;{ nurseryId: string }&gt;();</span>
   const [selectedNursery, setSelectedNursery] = <span class="cstat-no" title="statement not covered" >useState&lt;Facility | null&gt;();</span>
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
+  const navigate = <span class="cstat-no" title="statement not covered" >useSyncNavigate();</span>
   const { isMobile } = <span class="cstat-no" title="statement not covered" >useDeviceInfo();</span>
   const gridSize = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (isMobile) {</span>
@@ -735,23 +744,33 @@ export default function <span class="fstat-no" title="function not covered" >Nur
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (nurseryId) {</span>
-      const seedBanks = <span class="cstat-no" title="statement not covered" >getAllNurseries(selectedOrganization);</span>
+      const seedBanks = <span class="cstat-no" title="statement not covered" >selectedOrganization ? getAllNurseries(selectedOrganization) : [];</span>
 <span class="cstat-no" title="statement not covered" >      setSelectedNursery(seedBanks?.find(<span class="fstat-no" title="function not covered" >(s</span>b) =&gt; <span class="cstat-no" title="statement not covered" >sb?.id === parseInt(nurseryId, 10))</span>);</span>
     }
   }, [nurseryId, selectedOrganization]);
+&nbsp;
+  const goToNursery = <span class="cstat-no" title="statement not covered" >useCallback(</span>
+<span class="fstat-no" title="function not covered" >    (i</span>d?: number) =&gt; {
+      const nurseriesLocation = <span class="cstat-no" title="statement not covered" >{</span>
+        pathname: APP_PATHS.NURSERIES + (id ? `/${id}` : ''),
+      };
+<span class="cstat-no" title="statement not covered" >      navigate(nurseriesLocation);</span>
+    },
+    [navigate]
+  );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (navigateToNursery.navigate) {</span>
 <span class="cstat-no" title="statement not covered" >      goToNursery(navigateToNursery.id);</span>
     }
-  }, [selectedOrganization]);
+  }, [selectedOrganization, goToNursery, navigateToNursery.id, navigateToNursery.navigate]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    setRecord({</span>
       name: selectedNursery?.name || '',
       description: selectedNursery?.description,
       id: selectedNursery?.id ?? -1,
-      organizationId: selectedOrganization.id,
+      organizationId: selectedOrganization?.id || -1,
       type: 'Nursery',
       connectionState: 'Not Connected',
       timeZone: selectedNursery?.timeZone,
@@ -761,13 +780,6 @@ export default function <span class="fstat-no" title="function not covered" >Nur
       capacity: selectedNursery?.capacity,
     });
   }, [selectedNursery, setRecord, selectedOrganization]);
-&nbsp;
-  const goToNursery = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>d?: number) =&gt; {</span>
-    const nurseriesLocation = <span class="cstat-no" title="statement not covered" >{</span>
-      pathname: APP_PATHS.NURSERIES + (id ? `/${id}` : ''),
-    };
-<span class="cstat-no" title="statement not covered" >    navigate(nurseriesLocation);</span>
-  };
 &nbsp;
   const saveNursery = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (</span>
@@ -802,16 +814,16 @@ export default function <span class="fstat-no" title="function not covered" >Nur
           subLocationNames: editedSubLocations?.map(<span class="fstat-no" title="function not covered" >(l</span>) =&gt; <span class="cstat-no" title="statement not covered" >l.name as string)</span>,
         });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (response.requestSucceeded &amp;&amp; selectedOrganization.id !== -1) {</span>
+<span class="cstat-no" title="statement not covered" >    if (response.requestSucceeded &amp;&amp; selectedOrganization) {</span>
 <span class="cstat-no" title="statement not covered" >      if (selectedNursery &amp;&amp; editedSubLocations) {</span>
 <span class="cstat-no" title="statement not covered" >        await SubLocationService.saveEditedSubLocations(id as number, editedSubLocations);</span>
       }
-<span class="cstat-no" title="statement not covered" >      reloadOrganizations(selectedOrganization.id);</span>
+<span class="cstat-no" title="statement not covered" >      void reloadOrganizations(selectedOrganization.id);</span>
 <span class="cstat-no" title="statement not covered" >      snackbar.toastSuccess(selectedNursery ? strings.CHANGES_SAVED : strings.NURSERY_ADDED);</span>
 <span class="cstat-no" title="statement not covered" >      if (!selectedNursery) {</span>
 <span class="cstat-no" title="statement not covered" >        id = (response as CreateFacilityResponse).facilityId || undefined;</span>
       }
-<span class="cstat-no" title="statement not covered" >      setNavigateToNursery({ navigate: true, id: id });</span>
+<span class="cstat-no" title="statement not covered" >      setNavigateToNursery({ navigate: true, id });</span>
     } else {
 <span class="cstat-no" title="statement not covered" >      snackbar.toastError();</span>
     }
@@ -850,7 +862,7 @@ export default function <span class="fstat-no" title="function not covered" >Nur
         cancelID='cancelCreateNursery'
         saveID='saveCreateNursery'
         onCancel={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >goToNursery(selectedNursery?.id)}</span>
-        onSave={saveNursery}
+        onSave={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >void saveNursery()}</span>
       &gt;
         &lt;Box marginBottom={theme.spacing(4)} paddingLeft={theme.spacing(3)}&gt;
           &lt;Typography fontSize='24px' fontWeight={600}&gt;
@@ -985,7 +997,7 @@ export default function <span class="fstat-no" title="function not covered" >Nur
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

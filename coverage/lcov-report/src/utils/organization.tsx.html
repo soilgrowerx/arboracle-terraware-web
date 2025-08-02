@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
@@ -127,10 +127,7 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,7 +155,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -195,8 +191,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { defaultSelectedOrg } from 'src/providers/contexts';
-import { Facility, FacilityType } from 'src/types/Facility';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Facility, FacilityType } from 'src/types/Facility';
 import { HighOrganizationRolesValues, Organization, OrganizationRole } from 'src/types/Organization';
 import { OrganizationUser } from 'src/types/User';
 &nbsp;
@@ -218,19 +213,18 @@ export const getSeedBank = <span class="fstat-no" title="function not covered" >
 <span class="cstat-no" title="statement not covered" >  return getAllSeedBanks(organization).find(<span class="fstat-no" title="function not covered" >(s</span>b) =&gt; <span class="cstat-no" title="statement not covered" >sb?.id === facilityId)</span>;</span>
 };
 &nbsp;
-export const isOwner = <span class="fstat-no" title="function not covered" >(o</span>rganization: Organization | undefined) =&gt; {
+export const isOwner = <span class="fstat-no" title="function not covered" >&lt;T</span> extends Organization&gt;(organization: T | undefined): organization is T =&gt; {
 <span class="cstat-no" title="statement not covered" >  return organization?.role === 'Owner';</span>
 };
 &nbsp;
-export const isAdmin = <span class="fstat-no" title="function not covered" >(o</span>rganization: Organization | undefined) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return HighOrganizationRolesValues.includes(organization?.role || '');</span>
-};
+export const isAdmin = <span class="fstat-no" title="function not covered" >&lt;T</span> extends Organization&gt;(organization: T | undefined): organization is T =&gt;
+<span class="cstat-no" title="statement not covered" >  HighOrganizationRolesValues.includes(organization?.role || '');</span>
 &nbsp;
-export const isManagerOrHigher = <span class="fstat-no" title="function not covered" >(o</span>rganization: Organization | undefined) =&gt; {
+export const isManagerOrHigher = <span class="fstat-no" title="function not covered" >&lt;T</span> extends Organization&gt;(organization: T | undefined): organization is T =&gt; {
 <span class="cstat-no" title="statement not covered" >  return organization?.role === 'Manager' || isAdmin(organization);</span>
 };
 &nbsp;
-export const isMember = <span class="fstat-no" title="function not covered" >(o</span>rganization: Organization | undefined) =&gt; {
+export const isMember = <span class="fstat-no" title="function not covered" >&lt;T</span> extends Organization&gt;(organization: T | undefined): organization is T =&gt; {
 <span class="cstat-no" title="statement not covered" >  return !!organization;</span>
 };
 &nbsp;
@@ -250,7 +244,7 @@ export const getNurseryById = <span class="fstat-no" title="function not covered
 <span class="cstat-no" title="statement not covered" >  return found[0];</span>
 };
 &nbsp;
-export const isPlaceholderOrg = <span class="fstat-no" title="function not covered" >(i</span>d: number | undefined) =&gt; <span class="cstat-no" title="statement not covered" >!id || id === defaultSelectedOrg.id;</span>
+export const isPlaceholderOrg = <span class="fstat-no" title="function not covered" >(i</span>d: number | undefined) =&gt; <span class="cstat-no" title="statement not covered" >!id;</span>
 &nbsp;
 export const selectedOrgHasFacilityType = <span class="fstat-no" title="function not covered" >(o</span>rganization: Organization, facilityType: FacilityType): boolean =&gt; {
 <span class="cstat-no" title="statement not covered" >  if (!isPlaceholderOrg(organization?.id) &amp;&amp; organization?.facilities) {</span>
@@ -268,7 +262,7 @@ export const selectedOrgHasFacilityType = <span class="fstat-no" title="function
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-17T23:23:23.017Z
+                at 2025-08-02T03:53:24.813Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
